@@ -31,7 +31,7 @@ function attack(attacker, opponent) {
     //Combatant's attack score is caluclated
     var damageToOpponentHealth = calculateAttackDamage(attacker);
     //Opponent's health is reduced by attack score
-    opponent.health = opponent - damageToOpponentHealth;
+    opponent.health = opponent.health - damageToOpponentHealth;
     //Give opponent "beingAttacked" class - for set period of time - then remove
     
     //Display attack score and opponents new health 
@@ -45,6 +45,7 @@ function attack(attacker, opponent) {
 function attackSequence(human, monster) {
     //Hide attack button
     attack(human, monster);
+    //set timeout
     attack(monster, human);
     //Show attack button
 }
