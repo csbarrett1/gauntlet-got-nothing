@@ -4,12 +4,16 @@
 var warrior = new Gauntlet.Combatants.Human();
 warrior.setWeapon(new WarAxe());
 warrior.generateClass();  // This will be used for "Surprise me" option
+
 console.log(warrior.toString());
 
 var orc = new Gauntlet.Combatants.Orc();
 orc.generateClass();
 orc.setWeapon(new BroadSword());
 console.log(orc.toString());
+
+var buildPlayer = $("battlefield").click();
+console.log(buildPlayer);
 
 /*
   Test code to generate a spell
@@ -37,6 +41,9 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
+        case "battlefield":
         moveAlong = ($("#player-name").val() !== "");
         break;
     }
