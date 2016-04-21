@@ -29,3 +29,23 @@ var WarAxe = function() {
 };
 WarAxe.prototype = new Weapon();
 
+var Mace = function() {
+  this.name = "mace";
+  this.damage = 12;
+  this.hands = 3;
+};
+Mace.prototype = new Weapon();
+
+var Lance = function() {
+  this.name = "lance";
+  this.damage = 15;
+  this.hands = 2;
+};
+Lance.prototype = new Weapon();
+
+var DoubleAxe = function() {
+  this.name = "double axe";
+  this.damage = 20;
+  this.hands = 5;
+};
+DoubleAxe.prototype = new Weapon();
