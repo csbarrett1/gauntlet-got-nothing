@@ -30,7 +30,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./javascripts/**/*.js'], ['lint', 'bundle']);
+  gulp.watch(['./javascripts/*.js'], ['lint', 'bundle']);
 });
 
 // Makes watch keep watching even on JS error. 

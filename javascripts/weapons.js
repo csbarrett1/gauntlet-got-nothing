@@ -1,3 +1,13 @@
+"use strict";
+
+let $ = require("jquery");
+    // attack = require("./attack.js"),
+    // classes = require("./classes.js"),
+    // enemies = require("./enemies.js"),
+    // player = require("./player.js"),
+    // spells = require("./spells.js"),
+    // weapons = require("./weapons.js");
+
 var Weapon = function() {
   this.name = "bare hands";
   this.damage = 1;
@@ -5,7 +15,7 @@ var Weapon = function() {
 
   this.toString = function() {
     return this.name;
-  }
+  };
 };
 
 var Dagger = function() {
@@ -49,3 +59,13 @@ var DoubleAxe = function() {
   this.hands = 5;
 };
 DoubleAxe.prototype = new Weapon();
+
+module.exports = {
+  Weapon,
+  Dagger,
+  BroadSword,
+  WarAxe,
+  Mace,
+  Lance,
+  DoubleAxe
+};

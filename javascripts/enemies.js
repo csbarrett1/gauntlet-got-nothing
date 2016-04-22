@@ -1,4 +1,19 @@
-Gauntlet.Combatants.Orc = function() {
+"use strict";
+
+//To-do: Make sure to list dependencies here 
+let $ = require("jquery"),
+    // attack = require("./attack.js"),
+    classes = require("./classes.js"),
+    // enemies = require("./enemies.js"),
+    player = require("./player.js");
+    // spells = require("./spells.js"),
+    // weapons = require("./weapons.js");
+
+//To Do: Could add more enemy "species"
+
+
+
+var Orc = function() {
   this.health = this.health + 20;
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
@@ -11,10 +26,13 @@ Gauntlet.Combatants.Orc = function() {
     var randomClass = this.allowedClasses[random];
 
     // Composes the corresponding player class into the player object
-    this.class = new Gauntlet.GuildHall[randomClass]();
+    this.class = new classes.GuildHall[randomClass]();
     return this.class;
-  }
+  };
 };
+player.Combatants.Orc.prototype = new player.Combatants.Monster();
 
-Gauntlet.Combatants.Orc.prototype = new Gauntlet.Combatants.Monster();
+module.exports = {
+  Orc
+};
 
