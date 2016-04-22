@@ -1,14 +1,21 @@
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-var Gauntlet = Gauntlet || {};
-Gauntlet.SpellBook = {};
+"use strict";
 
+//To-do: Make sure to list dependencies here 
+let $ = require("jquery");
+    // attack = require("./attack.js"),
+    // classes = require("./classes.js"),
+    // enemies = require("./enemies.js"),
+    // player = require("./player.js"),
+    // spells = require("./spells.js"),
+    // weapons = require("./weapons.js");
+
+//Main Spellbook object that holds all spells a magical player can select
+var SpellBook = {};
 
 /*
   Base spell function that defines name, damage, damage type
  */
-Gauntlet.SpellBook.Spell = function() {
+SpellBook.Spell = function() {
   this.name = "";
   this.damage = 0;
 
@@ -17,17 +24,21 @@ Gauntlet.SpellBook.Spell = function() {
 
   this.toString = function() {
     return this.name + " of " + this.type + " for " + this.damage + " damage!";
-  }
+  };
 };
 
 /*
   An elemental sphere that can be cast by a magical class
  */
-Gauntlet.SpellBook.Sphere = function() {
+SpellBook.Sphere = function() {
   this.name = "sphere";
   this.damage = Math.floor(Math.random() * 10 + 10);
 
   var random = Math.round(Math.random() * (this.damageTypes.length - 1));
   this.type = this.damageTypes[random];
 };
-Gauntlet.SpellBook.Sphere.prototype = new Gauntlet.SpellBook.Spell();
+SpellBook.Sphere.prototype = new SpellBook.Spell();
+
+module.exports = {
+  SpellBook
+};
