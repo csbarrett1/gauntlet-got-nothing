@@ -1,11 +1,11 @@
 "use strict";
 
 //To-do: Make sure to list dependencies here 
-let $ = require("jquery");
+let $ = require("jquery"),
     // attack = require("./attack.js"),
     // classes = require("./classes.js"),
     // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
+    player = require("./player.js");
     // spells = require("./spells.js"),
     // weapons = require("./weapons.js");
 
