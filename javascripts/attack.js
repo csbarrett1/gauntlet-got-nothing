@@ -1,8 +1,9 @@
 "use strict";
 
 //To-do: Make sure to list dependencies here 
-//To-do: Change all playerX and playerY to appropriate player v opponent var
 
+//To-do: Change all playerX and playerY to appropriate player v opponent var
+let attackTimes = 0;
 
 
 //Calculate how much damage each player's attack is
@@ -48,4 +49,7 @@ function attackSequence(human, monster) {
     //set timeout
     attack(monster, human);
     //Show attack button
+    attackTimes++;
 }
+
+while (player.)
