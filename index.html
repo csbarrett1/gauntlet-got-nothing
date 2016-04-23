@@ -48,6 +48,10 @@
             </a>
           </div>
         </div>
+        <div class="choose_class">
+          <p>You enter a large atrium. At some point, this might have been an opulent guild hall, but it appears as though no one has taken care of it in years.  Moss and ivy anchor banners to the worn stone walls. As you approach the Elder, you notice a bard, clearly driven mad, in the corner, rocking back and forth, humming and muttering about monkeybutts. The Elder sighs wearily.</p>
+          <p>"Another adventurer?  Very well.  Choose your class wisely, ${this.PlayerName}. Every class has advantages and disadvantages.  Please choose quickly, or the bard will start singing, and nobody wants that."</p>
+        </div>
       </div>
 
       <div class="container-fluid">
@@ -184,6 +188,10 @@
             </a>
           </div>
         </div>
+        <div class="choose_weapon">
+          <p>The Elder gestures to an assortment of weapons on the wall behind him.</p>
+          <p>"You will also need to select a weapon before entering the battle chamber, ${this.PlayerName}. You may only choose one."</p>
+        </div>
       </div>
 
       <div class="container-fluid">
@@ -258,6 +266,11 @@
       <section>
         <div class="header card__prompt">
           <div>fight!</div>
+          <div>
+            <p>
+              As soon as you select your weapon, you are pushed through a door into a round room. A stone door slams closed behind you. A similar stone door slides open across the room. A hideous monster with ${this.skinColor} stomps in, wielding a ${this.weapon}.  A battle cry echoes around the chamber. You suddenly realize that, much like the Thunderdome, only one of you is leaving. You advance forward to face your foe.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -316,6 +329,7 @@
           <div class = "top_banner col-md"><img class="center-block" src="img/banner.jpg" alt="A Winner Is You!">
             <h1 class="winner_head">You Win!</h1>
           </div>
+          <p>You have defeated your opponent! If this were a better town you'd happened upon, the townspeople would be cheering, and you would be lavished with gold and adulation. However, you stopped off in the wrong town, ${this.PlayerName}. But, at least you live to fight another day.</p>
         </div>
 
         <div class="row">
@@ -356,6 +370,9 @@
               <img class="center-block" src="img/banner.jpg" alt="A Loser Is You!">
                 <h1 class="winner_head">You Lost.</h1>
               </div>
+                <div>
+                 <p>You have been defeated.  You have brought shame to this town, your family, and possibly the entire universe. Try harder next time.</p>
+                </div>
             </div>
 
             <div class="row">
