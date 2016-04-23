@@ -48,13 +48,17 @@ p {
   margin: 0 auto;
 }
 
-img {
+.img {
   width: 100%;
 }
 
 #textbox {
   width: 100%;
   margin-top: 7%;
+}
+
+.progress_bar {
+  margin-top: 20px;
 }
 
 .battlefield {
