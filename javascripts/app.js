@@ -1,21 +1,38 @@
+"use strict";
+
+
+//BROWSERIFY ENTRY FILE: Requirements
+//Now everytime we need to call a function or variable in these JS files, we will need to reference it as enemies.monster, etc
+let $ = require("jquery");
+    // attack = require("./attack.js"),
+    // classes = require("./classes.js"),
+    // enemies = require("./enemies.js"),
+    // player = require("./player.js"),
+    // spells = require("./spells.js"),
+    // weapons = require("./weapons.js");
+
 /*
   Test code to generate a human player and an orc player
  */
-var warrior = new Gauntlet.Combatants.Human();
-warrior.setWeapon(new WarAxe());
-warrior.generateClass();  // This will be used for "Surprise me" option
-console.log(warrior.toString());
+        // var warrior = new Gauntlet.Combatants.Human();
+        // warrior.setWeapon(new WarAxe());
+        // warrior.generateClass();  // This will be used for "Surprise me" option
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
-orc.setWeapon(new BroadSword());
-console.log(orc.toString());
+        // console.log(warrior.toString());
+
+        // var orc = new Gauntlet.Combatants.Orc();
+        // orc.generateClass();
+        // orc.setWeapon(new BroadSword());
+        // console.log(orc.toString());
+
+        // var buildPlayer = $("battlefield").click();
+        // console.log(buildPlayer);
 
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
+        // var spell = new Gauntlet.SpellBook.Sphere();
+        // console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {
@@ -37,6 +54,9 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
+        case "battlefield":
         moveAlong = ($("#player-name").val() !== "");
         break;
     }

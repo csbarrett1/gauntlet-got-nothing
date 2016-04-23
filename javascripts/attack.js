@@ -4,29 +4,38 @@
 
 //To-do: Change all playerX and playerY to appropriate player v opponent var
 let attackTimes = 0;
+let $ = require("jquery");
+    // attack = require("./attack.js"),
+    // classes = require("./classes.js"),
+    // enemies = require("./enemies.js"),
+    // player = require("./player.js"),
+    // spells = require("./spells.js"),
+    // weapons = require("./weapons.js");
 
+//To-do: jQuery reference to attack button
+var attackButton = $("#attackButton");
 
 //Calculate how much damage each player's attack is
 function calculateAttackDamage(player) {
     //Player's health, strength and intelligence are averaged.
-    var playerCurrentStat = ((player.health + player.strength + player.intelligence)/3)
+    var playerCurrentStat = ((player.health + player.strength + player.intelligence)/3);
     //Player's minimum and maximum attack damage is calculated then it picks a random number between the 2 and returns it
     var maximumAttackDamage = player.weapon.damage;
-    var minimumAttackDamage = (playerCurrentStat * maximumAttackDamage)/100
+    var minimumAttackDamage = (playerCurrentStat * maximumAttackDamage)/100;
     var attackDamage = 0;
     if (minimumAttackDamage >= maximumAttackDamage) {
         attackDamage = maximumAttackDamage;
     } else {
         attackDamage = getRandomInt(minimumAttackDamage, maximumAttackDamage);
     }
-    return attackDamage
+    return attackDamage;
 }
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function attack(attacker, opponent) {
+function attackAction(attacker, opponent) {
     //Give attacker "readyToAttack" class and remove "standby" class
     
     //Combatant's attack score is caluclated
@@ -38,18 +47,30 @@ function attack(attacker, opponent) {
     //Display attack score and opponents new health 
     
     //Remove attacker "readyToAttack" class and add "standby" class
-    
-    break;
+
 }
 
 //This is what happens if attack button is pressed
 function attackSequence(human, monster) {
     //Hide attack button
-    attack(human, monster);
+    
+    attackAction(human, monster);
     //set timeout
-    attack(monster, human);
+    
+    attackAction(monster, human);
     //Show attack button
     attackTimes++;
 }
 
 while (player.)
+
+    
+    //To-do: Update so that every third time, strength is decreased by certain amount
+
+}
+
+module.exports = {
+  calculateAttackDamage,
+  attackAction,
+  attackSequence
+};
