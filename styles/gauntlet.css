@@ -103,3 +103,91 @@ body {
   padding: 0 50px 0 20px;
   border-radius: 0 5px 5px 0;
 }
+
+.top_banner {
+  display: block;
+  width: auto; /* Width of new image */
+  height: auto; /* Height of new image */
+  /*padding-left: 180px;  Equal to width of new image */
+  max-width: 100%;
+  padding-bottom: 5px;
+}
+
+
+.winner_head {
+  text-align: center;
+}
+
+#player_win {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+.fight_stats {
+  display: block;
+  width: 33%;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+}
+
+#fight_stats {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+
+#monster_lose {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+#player_lose {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+.fight_stats {
+  display: block;
+  width: 33%;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+}
+
+#fight_stats {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto;  Height of new image 
+  margin: auto;
+  max-width: 100%;
+}
+
+
+
+#monster_win {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+.play_again {
+  display: block;
+}
