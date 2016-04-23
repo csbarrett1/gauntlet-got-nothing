@@ -16,13 +16,69 @@ body {
   min-width: 500px;
 }
 
-
+p {
+  font-size: 12px;
+}
 
 /*
   Section styles
  */
-.card { 
+.card {
   display: none;
+}
+
+.player_active {
+  width: 200px;
+  height: 200px;
+  border: 6px solid black;
+  margin: 0 auto;
+}
+
+.player_ready {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  margin: 0 auto;
+}
+
+.player_attacked {
+  width: 200px;
+  height: 200px;
+  border: 6px solid rgba(255, 0, 0, 1);
+  margin: 0 auto;
+}
+
+.img {
+  width: 100%;
+}
+
+#textbox {
+  width: 100%;
+  margin-top: 7%;
+}
+
+.progress_bar {
+  margin-top: 20px;
+}
+
+.battlefield {
+  margin-top: 100px;
+}
+
+.ready {
+  border: 6px solid black;
+}
+
+.title {
+  font-weight: 600;
+  border-bottom: 3px solid black;
+}
+
+.header {
+  background-color: #66CCFF;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 100%;
 }
 
 .card__prompt {
@@ -69,6 +125,12 @@ body {
   background-color: #0074D9;
 }
 
+.btn--red {
+  border-color: #FF0000;
+  color: white;
+  background-color: #FF0000;
+}
+
 .btn--yellow {
   border-color: #E4BD00;
   color: white;
@@ -77,7 +139,6 @@ body {
 
 .btn--big {
   font-size: 28px;
-  padding: 10px;
   font-weight: 400;
 }
 
@@ -100,6 +161,103 @@ body {
 }
 
 .btn__text {
-  padding: 0 50px 0 20px;
+  padding: 0 23px 0 20px;
   border-radius: 0 5px 5px 0;
+
 }
+
+/*
+winner screen
+*/
+
+.top_banner {
+  display: block;
+  width: auto; /* Width of new image */
+  height: auto; /* Height of new image */
+  /*padding-left: 180px;  Equal to width of new image */
+  max-width: 100%;
+  padding-bottom: 5px;
+}
+
+
+.winner_head {
+  text-align: center;
+}
+
+#player_win {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+.fight_stats {
+  display: block;
+  width: 33%;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+}
+
+#fight_stats {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+
+#monster_lose {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+/*
+lose screen
+*/
+
+#player_lose {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+.fight_stats {
+  display: block;
+  width: 33%;
+  height: auto;
+  margin: auto;
+  max-width: 100%;
+}
+
+#fight_stats {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto;  /*Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+
+#monster_win {
+  display: block;
+  width: 180px; /* Width of new image */
+  height: auto; /* Height of new image */
+  margin: auto;
+  max-width: 100%;
+}
+
+
+.play_again {
+  display: block;
+}
+

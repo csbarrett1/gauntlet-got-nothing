@@ -1,6 +1,9 @@
 "use strict";
 
 //To-do: Make sure to list dependencies here 
+
+//To-do: Change all playerX and playerY to appropriate player v opponent var
+let attackTimes = 0;
 let $ = require("jquery");
     // attack = require("./attack.js"),
     // classes = require("./classes.js"),
@@ -21,9 +24,9 @@ function calculateAttackDamage(player) {
     var minimumAttackDamage = (playerCurrentStat * maximumAttackDamage)/100;
     var attackDamage = 0;
     if (minimumAttackDamage >= maximumAttackDamage) {
-        attackDamage = maximumAttackDamage;
+        attackDamage = Math.floor(maximumAttackDamage);
     } else {
-        attackDamage = getRandomInt(minimumAttackDamage, maximumAttackDamage);
+        attackDamage = Math.floor(getRandomInt(minimumAttackDamage, maximumAttackDamage));
     }
     return attackDamage;
 }
@@ -56,13 +59,39 @@ function attackSequence(human, monster) {
     
     attackAction(monster, human);
     //Show attack button
-    
-    //To-do: Update so that every third time, strength is decreased by certain amount
-
+    attackTimes++;
+    checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
+    reduceStrength(attackTimes, human, monster);
 }
+
+function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
+    if (human.health <= 0) {
+        console.log("human died");
+        //Disable attack button
+    } else if (monster.health <= 0) {
+        console.log("monster died");
+        //Disable attack button
+        //move to "win" page
+    } else {
+        //Keep going
+    }
+}
+
+//Every third time, strength is decreased by certain amount
+
+function reduceStrength(attackTimes, human, monster) {
+    if (attackTimes % 3 === 0 && attackTimes > 0) {
+        human.strength = human.strength - 20;
+        monster.strength = monster.strength - 15;
+    }
+}
+
 
 module.exports = {
   calculateAttackDamage,
   attackAction,
-  attackSequence
+  attackSequence,
+  checkHealthToSeeIfOneOfTheseBitchesDied,
+  reduceStrength,
+  attackTimes
 };

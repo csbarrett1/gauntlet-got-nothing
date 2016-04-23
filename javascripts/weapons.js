@@ -8,7 +8,9 @@ let $ = require("jquery");
     // spells = require("./spells.js"),
     // weapons = require("./weapons.js");
 
-var Weapon = function() {
+var Weapons = {};
+
+Weapons.Weapon = function() {
   this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;
@@ -18,54 +20,48 @@ var Weapon = function() {
   };
 };
 
-var Dagger = function() {
+Weapons.Dagger = function() {
   this.name = "dagger";
   this.damage = 4;
   this.hands = 1;
 };
-Dagger.prototype = new Weapon();
+Weapons.Dagger.prototype = new Weapons.Weapon();
 
-var BroadSword = function() {
+Weapons.BroadSword = function() {
   this.name = "broad sword";
   this.damage = 14;
   this.hands = 2;
 };
-BroadSword.prototype = new Weapon();
+Weapons.BroadSword.prototype = new Weapons.Weapon();
 
-var WarAxe = function() {
+Weapons.WarAxe = function() {
   this.name = "war axe";
   this.damage = 18;
   this.hands = 2;
 };
-WarAxe.prototype = new Weapon();
+Weapons.WarAxe.prototype = new Weapons.Weapon();
 
-var Mace = function() {
+Weapons.Mace = function() {
   this.name = "mace";
   this.damage = 12;
   this.hands = 3;
 };
-Mace.prototype = new Weapon();
+Weapons.Mace.prototype = new Weapons.Weapon();
 
-var Lance = function() {
+Weapons.Lance = function() {
   this.name = "lance";
   this.damage = 15;
   this.hands = 2;
 };
-Lance.prototype = new Weapon();
+Weapons.Lance.prototype = new Weapons.Weapon();
 
-var DoubleAxe = function() {
+Weapons.DoubleAxe = function() {
   this.name = "double axe";
   this.damage = 20;
   this.hands = 5;
 };
-DoubleAxe.prototype = new Weapon();
+Weapons.DoubleAxe.prototype = new Weapons.Weapon();
 
 module.exports = {
-  Weapon,
-  Dagger,
-  BroadSword,
-  WarAxe,
-  Mace,
-  Lance,
-  DoubleAxe
+  Weapons
 };

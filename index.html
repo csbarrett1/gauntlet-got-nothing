@@ -12,35 +12,45 @@
 <body>
 
   <article id="game-container">
-
     <section id="player-setup" class="card card--name">
       <div class="card__prompt">
-        <div>RECORD YOUR NAME, ADVENTURER</div>
+        <div class="header">
+          <div>ENTER YOUR NAME, ADVENTURER</div>
+            <p>If you do not enter a name, one will be chosen for you.</p>
+        </div>
+
         <div class="field">
           <input type="text" autofocus="true" id="player-name" class="field__textinput">
         </div>
+      <div class="card__prompt">
+        <div>get it on!</div>
       </div>
 
       <div class="card__button">
-        <a class="card__link btn btn--big btn--orange" 
-           href="#" 
-           next="card--class">
+        <a class="card__link btn btn--big btn--orange" href="#" next="card--class">
           <span class="btn__prompt">></span>
           <span class="btn__text">Select class</span>
+          <span class="btn__text"></span>
         </a>
       </div>
     </section>
 
     <section id="class-select" class="card card--class">
       <div class="card__prompt">
-        <div>CHOOSE YOUR PATH</div>
-        <div>
-          <a class="card__back btn btn--small" 
-             href="#"
-             previous="card--name">
-            <span class="btn__prompt">&lt;</span>
-            <span class="btn__text">Back</span>
-          </a>          
+        <div class="header">
+          <div>CHOOSE YOUR CHARACTER</div>
+          <div>
+            <a class="card__back btn btn--small"
+               href="#"
+               previous="card--name">
+              <span class="btn__prompt">&lt;</span>
+              <span class="btn__text">Back</span>
+            </a>
+          </div>
+        </div>
+        <div class="choose_class">
+          <p>You enter a large atrium. At some point, this might have been an opulent guild hall, but it appears as though no one has taken care of it in years.  Moss and ivy anchor banners to the worn stone walls. As you approach the Elder, you notice a bard, clearly driven mad, in the corner, rocking back and forth, humming and muttering about monkeybutts. The Elder sighs wearily.</p>
+          <p>"Another adventurer?  Very well.  Choose your class wisely, ${this.PlayerName}. Every class has advantages and disadvantages.  Please choose quickly, or the bard will start singing, and nobody wants that."</p>
         </div>
       </div>
 
@@ -48,28 +58,34 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+            <div class="title">FIGHT CLASS</div>
+            <p class="bonus-att">
+              <p>bonus #1</p>
+              <p>bonus #2</p>
+              <p>bonus #3</p>
+            </p>
+              <a class="class__link btn btn--big btn--blue" id="Warrior" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Warrior</span>
               </a>
-            </div>      
-            
+            </div>
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Valkyrie" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Valkyrie</span>
               </a>
-            </div>      
-            
+            </div>
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Berserker" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">berserker</span>
+                <span class="btn__text">Berserker</span>
               </a>
-            </div>      
-            
+            </div>
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Monk" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Monk</span>
               </a>
@@ -78,154 +94,305 @@
 
           <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
-                <span class="btn__prompt">></span>
-                <span class="btn__text">Wizard</span>
-              </a>
+              <div class="title">MAGIC CLASS</div>
+                <p class="bonus-att">
+                  <p>bonus #1</p>
+                  <p>bonus #2</p>
+                  <p>bonus #3</p>
+                </p>
+                <a class="class__link btn btn--big btn--blue" id="Wizard" href="#">
+                  <span class="btn__prompt">></span>
+                  <span class="btn__text">Wizard</span>
+                </a>
             </div>
-            
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Sorcerer" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Sorcerer</span>
               </a>
             </div>
-            
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Conjurer" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Conjurer</span>
               </a>
             </div>
+
+            <div class="card__button">
+              <a class="class__link btn btn--big btn--blue" id="Shaman" href="#">
+                <span class="btn__prompt">></span>
+                <span class="btn__text">Shaman</span>
+              </a>
+            </div>
           </div>
+
           <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+            <div class="title">STEALTH CLASS</div>
+              <p class="bonus-att">
+                <p>bonus #1</p>
+                <p>bonus #2</p>
+                <p>bonus #3</p>
+            </p>
+              <a class="class__link btn btn--big btn--blue" id-"Thief" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Thief</span>
               </a>
             </div>
-            
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Ninja" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Ninja</span>
               </a>
             </div>
 
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Assassin" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Assassin</span>
-              </a>
-            </div>
-
-            <div class="card__button">
-              <a class="class__link btn btn--big btn--yellow" href="#">
-                <span class="btn__prompt">></span>
-                <span class="btn__text">surprise me</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
+
       <div class="card__button">
-        <a class="card__link btn btn--big btn--orange" 
-           href="#" 
-           next="card--weapon">
+        <a class="class__link btn btn--big btn--yellow" id="suprise_class" href="#">
+          <span class="btn__prompt">></span>
+          <span class="btn__text">surprise me</span>
+        </a>
+      </div>
+      <div class="card__button">
+        <a class="card__link btn btn--big btn--orange" href="#" next="card--weapon">
           <span class="btn__prompt">></span>
           <span class="btn__text">Select weapon</span>
         </a>
       </div>
     </section>
 
+
+
     <section id="weapon-select" class="card card--weapon">
       <div class="card__prompt">
-        <div>choose your weapon</div>
-        <div>
-          <a class="card__back btn btn--small" 
-             href="#"
-             previous="card--class">
-            <span class="btn__prompt">&lt;</span>
-            <span class="btn__text">Back</span>
-          </a>          
+        <div class="header">
+          <div>CHOOSE YOUR WEAPON</div>
+
+          <div>
+            <a class="card__back btn btn--small" href="#" previous="card--class">
+              <span class="btn__prompt">&lt;</span>
+              <span class="btn__text">Back</span>
+            </a>
+          </div>
+        </div>
+        <div class="choose_weapon">
+          <p>The Elder gestures to an assortment of weapons on the wall behind him.</p>
+          <p>"You will also need to select a weapon before entering the battle chamber, ${this.PlayerName}. You may only choose one."</p>
         </div>
       </div>
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Dagger" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Dagger</span>
               </a>
-            </div>      
-            
+            </div>
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="BroadSword" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">Broadsword</span>
+                <span class="btn__text">Broad Sword</span>
               </a>
-            </div>      
-            
+            </div>
+          </div>
+
+          <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="WarAxe" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">War Axe</span>
               </a>
-            </div>      
-           </div> 
+            </div>
 
-           <div class="col-sm-6">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Mace" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Mace</span>
               </a>
             </div>
-          
+          </div>
+
+          <div class="col-sm-4">
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="Lance" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Lance</span>
               </a>
-            </div>      
-            
+            </div>
+
             <div class="card__button">
-              <a class="class__link btn btn--big btn--blue" href="#">
+              <a class="class__link btn btn--big btn--blue" id="DoubleAxe" href="#">
                 <span class="btn__prompt">></span>
                 <span class="btn__text">Double Axe</span>
               </a>
-            </div>      
+            </div>
           </div>
+        </div>
 
+        <div class="card__button">
+          <a class="class__link btn btn--big btn--yellow" id="suprise_weapon" href="#">
+            <span class="btn__prompt">></span>
+            <span class="btn__text">surprise me</span>
+          </a>
+        </div>
+      </div>
 
       <div class="card__button">
-        <a class="card__link btn btn--big btn--orange" 
-           href="#" 
+        <a class="card__link btn btn--big btn--orange"
+           href="#"
            next="card--battleground">
           <span class="btn__prompt">></span>
           <span class="btn__text">defeat your enemies</span>
         </a>
       </div>
     </section>
-
     <section id="battleground" class="card card--battleground">
-      <div class="card__prompt">
-        <div>get it on!</div>
-      </div>
+      <section>
+        <div class="header card__prompt">
+          <div>fight!</div>
+          <div>
+            <p>
+              As soon as you select your weapon, you are pushed through a door into a round room. A stone door slams closed behind you. A similar stone door slides open across the room. A hideous monster with ${this.skinColor} stomps in, wielding a ${this.weapon}.  A battle cry echoes around the chamber. You suddenly realize that, much like the Thunderdome, only one of you is leaving. You advance forward to face your foe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="battlefield">
+        <div class="col-sm-3">
+          <div id="human player">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" id="player_name">Name</div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-12 img">
+            </div>
+            <div class="col-sm-12 progress_bar">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                  <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div name="text" id="textbox" cols="50" rows="5"></div>
+        </div>
+
+        <div class="col-sm-3">
+          <div id="opponent player">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">Monkey Arse</div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-12 img">
+            </div>
+          </div>
+            <div class="col-sm-12 progress_bar">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only">60% Complete (warning)</span>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+        <div class="col-sm-5"></div>
+          <a class="class__link btn btn--big btn--red col-sm-2" id="attackBtn" href="#">
+            <span class="btn__text">Attack!</span>
+          </a>
+        <div class="col-sm-5"></div>
+        </div>
+    </section>
+
+    <section id = "player-win" class="card card--win">
+      <div class="container-fluid">
+        <div class="row">
+          <div class = "top_banner col-md"><img class="center-block" src="img/banner.jpg" alt="A Winner Is You!">
+            <h1 class="winner_head">You Win!</h1>
+          </div>
+          <p>You have defeated your opponent! If this were a better town you'd happened upon, the townspeople would be cheering, and you would be lavished with gold and adulation. However, you stopped off in the wrong town, ${this.PlayerName}. But, at least you live to fight another day.</p>
+        </div>
+
+        <div class="row">
+          <div class = "player_win col-md-4">
+            <img id="player_win" src="img/hero-win.jpg" alt="hero win">
+          </div>
+          <div class ="fight_stats col-md-4">
+            <img id="fight_stats" src="img/stats-shield.jpg">
+            <p><h3>You defeated the monster in {x} rounds.</h3></p>
+          </div>
+
+          <div class = "monster_lose col-md-4">
+            <img id="monster_lose" src="img/orc-lose.jpg" alt="monster lose">
+          </div>
+        </div>
 
       <div class="card__button">
         <a class="card__link btn btn--big btn--orange" 
-           href="#">
+           href="#" 
+           next="card--class">
           <span class="btn__prompt">></span>
+          <span class="btn__text">Select class</span>
           <span class="btn__text"></span>
         </a>
       </div>
-    </section>
+          <div class="row">
+            <div class="button col-md">
+              <button class="play_again btn-lg center-block">Play Again?</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section id = "player-lose" class="card card--lose">
+        <div class="container-fluid">
+          <div class="row">
+            <div class = "top_banner col-md">
+              <img class="center-block" src="img/banner.jpg" alt="A Loser Is You!">
+                <h1 class="winner_head">You Lost.</h1>
+              </div>
+                <div>
+                 <p>You have been defeated.  You have brought shame to this town, your family, and possibly the entire universe. Try harder next time.</p>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class = "player_lose col-md-4">
+                <img id="player_lose" src="img/hero-lose.jpg" alt="hero lose">
+              </div>
+
+              <div class = "fight_stats col-md-4">
+                <img id="fight_stats" src="img/stats-shield.jpg">
+                  <p><h3>You were defeated in {x} rounds.</h3></p>
+              </div>
+
+              <div class = "monster_win col-md-4">
+                <img id="monster_win"src="img/orc-win.jpg" alt="monster win">
+              </div>
+            </div>
+
+            <div class="button col-md">
+              <button class="play_again btn-lg center-block">Play Again?</button>
+            </div>
+        </div>
+      </section>
   </article>
 
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>

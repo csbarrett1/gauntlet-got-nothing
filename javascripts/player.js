@@ -1,11 +1,11 @@
 "use strict";
 
 //To-do: Make sure to list dependencies here 
-let $ = require("jquery");
+let $ = require("jquery"),
     // attack = require("./attack.js"),
     // classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
+    enemies = require("./enemies.js"),
+    player = require("./player.js");
     // spells = require("./spells.js"),
     // weapons = require("./weapons.js");
 
@@ -22,7 +22,8 @@ Combatants.Player = function(name) {
   this.weapon = null;
 
   this.playerName = name || "unknown adventurer";
-  this.health = Math.floor(Math.random() * 40 + 50);
+  this.originalHealth = Math.floor(Math.random() * 40 + 50);
+  this.health = this.originalHealth;
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
@@ -50,6 +51,10 @@ Combatants.Player = function(name) {
 
 Combatants.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
+};
+
+Combatants.Player.prototype.setClass = function(newClass) {
+  this.class = newClass;
 };
 
 Combatants.Player.prototype.generateClass = function() {
