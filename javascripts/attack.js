@@ -60,17 +60,37 @@ function attackSequence(human, monster) {
     attackAction(monster, human);
     //Show attack button
     attackTimes++;
+    checkHealth(human, monster);
+    reduceStrength(attackTimes, human, monster);
 }
 
-while (player.)
-
-    
-    //To-do: Update so that every third time, strength is decreased by certain amount
-
+function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
+    if (human.health <= 0) {
+        //Disable attack button
+        //move to "lose" page
+    } else if (monster.health <= 0) {
+        //Disable attack button
+        //move to "win" page
+    } else {
+        //Keep going
+    }
 }
+
+//Every third time, strength is decreased by certain amount
+
+function reduceStrength(attackTimes, human, monster) {
+    if (attackTimes % 3 === 0 && attackTimes > 0) {
+        human.strength = human.strength - 20;
+        monster.strength = monster.strength - 15;
+    }
+}
+
 
 module.exports = {
   calculateAttackDamage,
   attackAction,
-  attackSequence
+  attackSequence,
+  checkHealthToSeeIfOneOfTheseBitchesDied,
+  reduceStrength,
+  attackTimes
 };
