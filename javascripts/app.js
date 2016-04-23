@@ -3,13 +3,14 @@
 
 //BROWSERIFY ENTRY FILE: Requirements
 //Now everytime we need to call a function or variable in these JS files, we will need to reference it as enemies.monster, etc
-let $ = require("jquery");
+let $ = require("jquery"),
     // attack = require("./attack.js"),
     // classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
+    enemies = require("./enemies.js");
     // player = require("./player.js"),
     // spells = require("./spells.js"),
     // weapons = require("./weapons.js");
+
 
 /*
   Test code to generate a human player and an orc player
@@ -20,10 +21,10 @@ let $ = require("jquery");
 
         // console.log(warrior.toString());
 
-        // var orc = new Gauntlet.Combatants.Orc();
-        // orc.generateClass();
-        // orc.setWeapon(new BroadSword());
-        // console.log(orc.toString());
+        var orc = new enemies.Orc();
+        orc.generateClass();
+        orc.generateWeapon();
+        console.log(orc.toString(), orc.intelligence, orc.strength, orc.health);
 
         // var buildPlayer = $("battlefield").click();
         // console.log(buildPlayer);
