@@ -5,11 +5,11 @@
 //Now everytime we need to call a function or variable in these JS files, we will need to reference it as enemies.monster, etc
 let $ = require("jquery"),
     // attack = require("./attack.js"),
-    // classes = require("./classes.js"),
-    enemies = require("./enemies.js");
-    // player = require("./player.js"),
+    classes = require("./classes.js"),
+    enemies = require("./enemies.js"),
+    player = require("./player.js"),
     // spells = require("./spells.js"),
-    // weapons = require("./weapons.js");
+    weapons = require("./weapons.js");
 
 
 /*
@@ -26,8 +26,10 @@ let $ = require("jquery"),
         orc.generateWeapon();
         console.log(orc.toString(), orc.intelligence, orc.strength, orc.health);
 
-        // var buildPlayer = $("battlefield").click();
-        // console.log(buildPlayer);
+        var warrior = new player.Combatants.Human();
+      
+        
+        // console.log(warrior.toString()
 
 /*
   Test code to generate a spell
@@ -53,12 +55,15 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
+        warrior.setClass(new classes.GuildHall.Warrior());
         break;
       case "card--weapon":
         moveAlong = ($("#player-name").val() !== "");
+        warrior.setWeapon(new weapons.Weapons.Lance());
         break;
         case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
+        console.log(warrior);
         break;
     }
 
