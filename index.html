@@ -337,7 +337,40 @@
         </a>
       </div>
     </section>
+<section id = "player-win" class="card card--win">
+                    <div class="container-fluid">
+                        <div class="row">
+                    <div class = "top_banner col-md"><img class="center-block" src="img/banner.jpg" alt="A Winner Is You!"><h1 class="winner_head">You Win!</h1></div>
+                        </div>
 
+                        <div class="row">
+                    <div class = "player_win col-md-4"><img id="player_win" src="img/hero-win.jpg" alt="hero win"> </div>
+                    <div class ="fight_stats col-md-4"><img id="fight_stats" src="img/stats-shield.jpg"><p><h3>You defeated the monster in {x} rounds.</h3></p></div>
+                    <div class = "monster_lose col-md-4"><img id="monster_lose" src="img/orc-lose.jpg" alt="monster lose"></div>
+                  </div>
+                <div class="row">
+                <div class="button col-md">
+                  <button class="play_again btn-lg center-block">Play Again?</button>
+                  </div>
+                  </div>
+                    </div>
+        </section>
+
+        <section id = "player-lose" class="card card--lose">
+          <div class="container-fluid">
+            <div class="row">
+                <div class = "top_banner col-md"><img class="center-block" src="img/banner.jpg" alt="A Loser Is You!"><h1 class="winner_head">You Lost.</h1></div></div>
+
+            <div class="row">
+                <div class = "player_lose col-md-4"><img id="player_lose" src="img/hero-lose.jpg" alt="hero lose"> </div>
+                <div class = "fight_stats col-md-4"><img id="fight_stats" src="img/stats-shield.jpg"><p><h3>You were defeated in {x} rounds.</h3></p></div>
+                <div class = "monster_win col-md-4"><img id="monster_win"src="img/orc-win.jpg" alt="monster win"></div></div>
+
+                <div class="button col-md">
+                        <button class="play_again btn-lg center-block">Play Again?</button>
+                </div>
+            </div>
+        </section>
   </article>
 
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
