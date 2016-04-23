@@ -1,11 +1,12 @@
 "use strict";
 
 //To-do: Make sure to list dependencies here 
-let $ = require("jquery");
+let $ = require("jquery"),
+    // app = require("./app.js"),
     // attack = require("./attack.js"),
     // classes = require("./classes.js"),
     // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
+    player = require("./player.js");
     // spells = require("./spells.js"),
     // weapons = require("./weapons.js");
     
@@ -13,21 +14,33 @@ let $ = require("jquery");
 let selectNamePage = $("#player-setup");
 let selectClassPage = $("#class-select");
 let selectWeaponPage = $("#weapon-select");
-let battlegroundPage = $("#battleground");
-let winPage = $("#win-page");
-let losePage = $("#losePage");
+let battlegroundPage = $("#battlefield");
+let winPage = $("#player-win");
+let losePage = $("#player-lose");
+var selectedClass = null;
+
 
 var executeEventListeners = function() {
+selectClassPage.click(getClass);
 
 
 
+};
 
+var getClass = function(event) {
+    if (event.originalEvent.target.closest(".class__link") && event.originalEvent.target.closest(".btn--orange")) { 
+      if (event.target.closest(".class__link").id !== undefined) {
+        selectedClass = event.target.closest(".class__link").id;
+      } else if (event.target.id !== undefined) {
+        selectedClass = event.target.parentElement.id;
+    }
+    return selectedClass;
+  }
+};
 
-
-
-}
 
 
 module.exports = {
-  executeEventListeners
+  executeEventListeners,
+  selectedClass
 };

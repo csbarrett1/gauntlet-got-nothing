@@ -21,7 +21,7 @@ Combatants.Player = function(name) {
   this.class = null;
   this.weapon = null;
 
-  this.playerName = name || "unknown adventurer";
+  this.playerName = null;
   this.originalHealth = Math.floor(Math.random() * 40 + 50);
   this.health = this.originalHealth;
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
@@ -55,6 +55,10 @@ Combatants.Player.prototype.setWeapon = function(newWeapon) {
 
 Combatants.Player.prototype.setClass = function(newClass) {
   this.class = newClass;
+};
+
+Combatants.Player.prototype.setName = function(newName) {
+  this.playerName = newName;
 };
 
 Combatants.Player.prototype.generateClass = function() {

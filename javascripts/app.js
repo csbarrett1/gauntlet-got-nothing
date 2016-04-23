@@ -9,7 +9,8 @@ let $ = require("jquery"),
     enemies = require("./enemies.js"),
     player = require("./player.js"),
     // spells = require("./spells.js"),
-    weapons = require("./weapons.js");
+    weapons = require("./weapons.js"),
+    eventListeners = require("./eventListeners.js");
 
 
 /*
@@ -27,6 +28,7 @@ let $ = require("jquery"),
         console.log(orc.toString(), orc.intelligence, orc.strength, orc.health);
 
         var warrior = new player.Combatants.Human();
+        console.log("warrior", warrior);
       
         
         // console.log(warrior.toString()
@@ -39,6 +41,9 @@ let $ = require("jquery"),
 
 
 $(document).ready(function() {
+  eventListeners.executeEventListeners();
+
+
   /*
     Show the initial view that accepts player name
    */
@@ -54,20 +59,24 @@ $(document).ready(function() {
 
     switch (nextCard) {
       case "card--class":
+        warrior.setName($("#player-name").val());
         moveAlong = ($("#player-name").val() !== "");
-        warrior.setClass(new classes.GuildHall.Warrior());
         break;
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
+        var selectedClass = eventListeners.selectedClass;
+        console.log("selectedClass", selectedClass);
+        warrior.setClass(new classes.GuildHall.selectedClass());
         warrior.setWeapon(new weapons.Weapons.Lance());
+        console.log("warrior", warrior);
+        moveAlong = ($("#player-name").val() !== "");
         break;
-        case "card--battleground":
+      case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         console.log(warrior);
         $("#attackBtn").click(function() {
         attack.attackSequence(warrior, orc);
         console.log("attack happened", warrior.originalHealth, orc.originalHealth, warrior.health, orc.health);  
-        })
+        });
         break;
     }
 
@@ -87,3 +96,9 @@ $(document).ready(function() {
   });
 
 });
+
+
+module.exports = {
+  warrior,
+  orc
+};
