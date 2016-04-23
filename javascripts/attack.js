@@ -24,9 +24,9 @@ function calculateAttackDamage(player) {
     var minimumAttackDamage = (playerCurrentStat * maximumAttackDamage)/100;
     var attackDamage = 0;
     if (minimumAttackDamage >= maximumAttackDamage) {
-        attackDamage = maximumAttackDamage;
+        attackDamage = Math.floor(maximumAttackDamage);
     } else {
-        attackDamage = getRandomInt(minimumAttackDamage, maximumAttackDamage);
+        attackDamage = Math.floor(getRandomInt(minimumAttackDamage, maximumAttackDamage));
     }
     return attackDamage;
 }
@@ -60,15 +60,16 @@ function attackSequence(human, monster) {
     attackAction(monster, human);
     //Show attack button
     attackTimes++;
-    checkHealth(human, monster);
+    checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
     reduceStrength(attackTimes, human, monster);
 }
 
 function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
     if (human.health <= 0) {
+        console.log("human died");
         //Disable attack button
-        //move to "lose" page
     } else if (monster.health <= 0) {
+        console.log("monster died");
         //Disable attack button
         //move to "win" page
     } else {

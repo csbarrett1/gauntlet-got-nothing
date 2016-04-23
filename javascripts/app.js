@@ -4,7 +4,7 @@
 //BROWSERIFY ENTRY FILE: Requirements
 //Now everytime we need to call a function or variable in these JS files, we will need to reference it as enemies.monster, etc
 let $ = require("jquery"),
-    // attack = require("./attack.js"),
+    attack = require("./attack.js"),
     classes = require("./classes.js"),
     enemies = require("./enemies.js"),
     player = require("./player.js"),
@@ -64,6 +64,10 @@ $(document).ready(function() {
         case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
         console.log(warrior);
+        $("#attackBtn").click(function() {
+        attack.attackSequence(warrior, orc);
+        console.log("attack happened", warrior.originalHealth, orc.originalHealth, warrior.health, orc.health);  
+        })
         break;
     }
 

@@ -22,7 +22,8 @@ Combatants.Player = function(name) {
   this.weapon = null;
 
   this.playerName = name || "unknown adventurer";
-  this.health = Math.floor(Math.random() * 40 + 50);
+  this.originalHealth = Math.floor(Math.random() * 40 + 50);
+  this.health = this.originalHealth;
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
