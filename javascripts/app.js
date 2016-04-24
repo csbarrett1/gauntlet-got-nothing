@@ -47,6 +47,8 @@ $(document).ready(function() {
   });
   
   $(".class__link").click(function(e) {
+    $(".class__link").removeClass('selected');
+    $(e.currentTarget).addClass('selected');
     if (e.target.id !== "") {
       selectedClass = e.target.id;
     } else {
@@ -56,6 +58,8 @@ $(document).ready(function() {
   });
 
   $(".weapon__link").click(function(e){
+    $(".weapon__link").removeClass('selected');
+    $(e.currentTarget).addClass('selected');
     if (e.target.id !== "") {
       selectedWeapon = e.target.id;
     } else {
