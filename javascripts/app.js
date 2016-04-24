@@ -40,14 +40,11 @@ $(document).ready(function() {
     Show the initial view that accepts player name
    */
   $("#player-setup").show();
+  $(".btn--orange").addClass('disabled');
 
-  //Grabs pages (cards) from index.html
-let selectNamePage = $("#player-setup");
-let selectClassPage = $("#class-select");
-let selectWeaponPage = $("#weapon-select");
-let battlegroundPage = $("#battlefield");
-let winPage = $("#player-win");
-let losePage = $("#player-lose");
+  $("#player-name").keyup(function(e) {
+    disabledButtonCheck();
+  });
   
   $(".class__link").click(function(e) {
     if (e.target.id !== "") {
@@ -55,6 +52,7 @@ let losePage = $("#player-lose");
     } else {
       selectedClass = e.target.closest(".class__link").id;
     }
+    disabledButtonCheck();
   });
 
   $(".weapon__link").click(function(e){
@@ -63,6 +61,7 @@ let losePage = $("#player-lose");
     } else {
       selectedWeapon = e.target.closest(".weapon__link").id;
     }
+    disabledButtonCheck();
   });
 
   $("#attackBtn").click(function(e) {
@@ -87,11 +86,20 @@ let losePage = $("#player-lose");
     $(".card--battleground").show();
   });
 
-  $("#player-name").keyup(function(e){
+
+  function disabledButtonCheck() {
     if ($("#player-name").val() !== "") {
-    $($("#player-setup").find(".btn--orange")[0]).removeClass('disabled');
+      $("#nameWasInput").removeClass('disabled');
     }
-  });
+
+    if (selectedClass !== null) {
+      $("#classHasBeenSelected").removeClass('disabled');
+    }
+
+    if (selectedWeapon !== null) {
+      $("#weaponHasBeenSelected").removeClass('disabled');
+    }
+  }
   
         
   /*
@@ -105,7 +113,7 @@ let losePage = $("#player-lose");
     switch (nextCard) {
       case "card--class":
         warrior.setName($("#player-name").val());
-        moveAlong = ($("#player-name").val() !== "")
+        moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
         if (selectedClass === "surprise_class") {
@@ -126,13 +134,8 @@ let losePage = $("#player-lose");
     }
 
     if (moveAlong) {
-      $(".btn--orange").removeClass('disabled');
       $(".card").hide();
       $("." + nextCard).show();
-    }
-
-    if (!moveAlong) {
-      $(".btn--orange").addClass('disabled');
     }
   });
 
