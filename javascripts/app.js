@@ -9,8 +9,7 @@ let $ = require("jquery"),
     enemies = require("./enemies.js"),
     player = require("./player.js"),
     // spells = require("./spells.js"),
-    weapons = require("./weapons.js"),
-    eventListeners = require("./eventListeners.js");
+    weapons = require("./weapons.js");
 
 //Grabs pages (cards) from index.html
 let selectNamePage = $("#player-setup");
@@ -21,25 +20,17 @@ let winPage = $("#player-win");
 let losePage = $("#player-lose");
 
 /*
-  Test code to generate a human player and an orc player
+Code to generate a human player and an orc player
  */
-        // var warrior = new Gauntlet.Combatants.Human();
-        // warrior.setWeapon(new WarAxe());
-        // warrior.generateClass();  // This will be used for "Surprise me" option
 
-        // console.log(warrior.toString());
+  var orc = new enemies.Orc();
+  orc.generateClass();
+  orc.generateWeapon();
+  orc.playerName = "Monkey Arse"
+  console.log("orc", orc);
 
-        var orc = new enemies.Orc();
-        orc.generateClass();
-        orc.generateWeapon();
-        console.log(orc.toString(), orc.intelligence, orc.strength, orc.health);
-
-        var warrior = new player.Combatants.Human();
-        console.log("warrior", warrior);
+  var warrior = new player.Combatants.Human();
       
-        
-        // console.log(warrior.toString()
-
 /*
   Test code to generate a spell
  */

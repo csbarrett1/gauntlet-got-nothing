@@ -5,12 +5,6 @@
 //To-do: Change all playerX and playerY to appropriate player v opponent var
 let attackTimes = 0;
 let $ = require("jquery");
-    // attack = require("./attack.js"),
-    // classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
-    // spells = require("./spells.js"),
-    // weapons = require("./weapons.js");
 
 //To-do: jQuery reference to attack button
 var attackButton = $("#attackButton");

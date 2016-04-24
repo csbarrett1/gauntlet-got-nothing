@@ -50,7 +50,7 @@ Combatants.Player = function(name) {
 };
 
 Combatants.Player.prototype.setWeapon = function(newWeapon) {
-  this.weapon = newWeapon;
+  this.weapon = new weapons.Weapons[newWeapon]();
 };
 
 Combatants.Player.prototype.setClass = function(newClass) {
