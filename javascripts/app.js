@@ -12,6 +12,13 @@ let $ = require("jquery"),
     weapons = require("./weapons.js"),
     eventListeners = require("./eventListeners.js");
 
+//Grabs pages (cards) from index.html
+let selectNamePage = $("#player-setup");
+let selectClassPage = $("#class-select");
+let selectWeaponPage = $("#weapon-select");
+let battlegroundPage = $("#battlefield");
+let winPage = $("#player-win");
+let losePage = $("#player-lose");
 
 /*
   Test code to generate a human player and an orc player
@@ -41,8 +48,8 @@ let $ = require("jquery"),
 
 
 $(document).ready(function() {
-  eventListeners.executeEventListeners();
-
+  var selectedClass = null;
+  var selectedWeapon = null;
 
   /*
     Show the initial view that accepts player name
@@ -53,6 +60,28 @@ $(document).ready(function() {
     When any button with card__link class is clicked,
     move on to the next view.
    */
+  
+  $(".class__link").click(function(e) {
+    if (e.target.id !== "") {
+      selectedClass = e.target.id;
+    } else {
+      selectedClass = e.target.closest(".class__link").id;
+    }
+  });
+
+  $(".weapon__link").click(function(e){
+    if (e.target.id !== "") {
+      selectedWeapon = e.target.id;
+    } else {
+      selectedWeapon = e.target.closest(".weapon__link").id;
+    }
+  });
+
+  $("#attackBtn").click(function(e) {
+    attack.attackSequence(warrior, orc);
+  });
+        
+
   $(".card__link").click(function(e) {
     var nextCard = $(this).attr("next");
     var moveAlong = false;
@@ -63,20 +92,20 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--weapon":
-        var selectedClass = eventListeners.selectedClass;
-        console.log("selectedClass", selectedClass);
-        warrior.setClass(new classes.GuildHall.selectedClass());
-        warrior.setWeapon(new weapons.Weapons.Lance());
-        console.log("warrior", warrior);
         moveAlong = ($("#player-name").val() !== "");
+        if (selectedClass === "surprise_class") {
+          warrior.generateClass();
+        } else {
+          warrior.setClass(selectedClass);
+        }
         break;
       case "card--battleground":
         moveAlong = ($("#player-name").val() !== "");
-        console.log(warrior);
-        $("#attackBtn").click(function() {
-        attack.attackSequence(warrior, orc);
-        console.log("attack happened", warrior.originalHealth, orc.originalHealth, warrior.health, orc.health);  
-        });
+        if (selectedWeapon === "surprise_weapon") {
+          warrior.generateWeapon();
+        } else {
+          warrior.setWeapon(selectedWeapon);
+        }
         break;
     }
 
@@ -95,7 +124,11 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
+
+
 });
+
+
 
 
 module.exports = {
