@@ -80,6 +80,10 @@ $(document).ready(function() {
   $("#attackBtn").click(function(e) {
     attack.attackSequence(warrior, orc);
   });
+
+  $(".play_again").click(function(e) {
+    location.reload();
+  });
         
 
   $(".card__link").click(function(e) {

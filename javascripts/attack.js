@@ -68,10 +68,15 @@ function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
     if (human.health <= 0) {
         console.log("human died");
         //Disable attack button
+        //move to "lose" page
+        $(".card").hide();
+        $(".card--lose").show();
     } else if (monster.health <= 0) {
         console.log("monster died");
         //Disable attack button
         //move to "win" page
+        $(".card").hide();
+        $(".card--win").show();
     } else {
         //Keep going
     }
