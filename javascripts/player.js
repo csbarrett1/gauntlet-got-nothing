@@ -3,11 +3,11 @@
 //To-do: Make sure to list dependencies here 
 let $ = require("jquery"),
     // attack = require("./attack.js"),
-    // classes = require("./classes.js"),
+    classes = require("./classes.js"),
     enemies = require("./enemies.js"),
-    player = require("./player.js");
+    player = require("./player.js"),
     // spells = require("./spells.js"),
-    // weapons = require("./weapons.js");
+    weapons = require("./weapons.js");
 
 //Main Combatants object that holds all assets for a player, then their species
 var Combatants = {};
@@ -21,7 +21,7 @@ Combatants.Player = function(name) {
   this.class = null;
   this.weapon = null;
 
-  this.playerName = name || "unknown adventurer";
+  this.playerName = null;
   this.originalHealth = Math.floor(Math.random() * 40 + 50);
   this.health = this.originalHealth;
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
@@ -50,26 +50,15 @@ Combatants.Player = function(name) {
 };
 
 Combatants.Player.prototype.setWeapon = function(newWeapon) {
-  this.weapon = newWeapon;
+  this.weapon = new weapons.Weapons[newWeapon]();
 };
 
 Combatants.Player.prototype.setClass = function(newClass) {
   this.class = newClass;
 };
 
-Combatants.Player.prototype.generateClass = function() {
-  // Get a random index from the allowed classes array
-  var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
-
-  // Get the string at the index
-  var randomClass = this.allowedClasses[random];
-
-  // Composes the corresponding player class into the player object
-  this.class = new randomClass();
-
-  // Add the health bonus
-  this.health += this.class.healthBonus;
-  return this.class;
+Combatants.Player.prototype.setName = function(newName) {
+  this.playerName = newName;
 };
 
 /*
@@ -86,7 +75,33 @@ Combatants.Human = function() {
   randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
   this.skinColor = this.skinColors[randomSkin];
 
-  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+  this.allowedClasses = ["Warrior", "Valkyrie", "Berserker",  "Monk", "Wizard", "Sorcerer", "Conjurer", "Shaman", "Thief", "Ninja", "Assassin"];
+  this.allowedWeapons = ["Dagger", "BroadSword", "WarAxe", "Mace", "Lance", "DoubleAxe"];
+
+
+  this.generateClass = function() {
+  // Get a random index from the allowed classes array
+  let random = Math.round(Math.random() * (this.allowedClasses.length - 1));
+
+  // Get the string at the index
+  let randomClass = this.allowedClasses[random];
+
+  // Composes the corresponding player class into the player object
+  this.class = new classes.GuildHall[randomClass]();
+  return this.class;
+  };
+
+  this.generateWeapon = function() {
+    // Get a random index from the allowed classes array
+    let random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+
+    // Get the string at the index
+    let randomWeapon = this.allowedWeapons[random];
+
+    // Composes the corresponding player class into the player object
+    this.weapon = new weapons.Weapons[randomWeapon]();
+    return this.weapon;
+  };
 };
 Combatants.Human.prototype = new Combatants.Player();
 

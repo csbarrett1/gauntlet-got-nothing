@@ -5,12 +5,6 @@
 //To-do: Change all playerX and playerY to appropriate player v opponent var
 let attackTimes = 0;
 let $ = require("jquery");
-    // attack = require("./attack.js"),
-    // classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
-    // spells = require("./spells.js"),
-    // weapons = require("./weapons.js");
 
 //To-do: jQuery reference to attack button
 var attackButton = $("#attackButton");
@@ -68,10 +62,15 @@ function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
     if (human.health <= 0) {
         console.log("human died");
         //Disable attack button
+        //move to "lose" page
+        $(".card").hide();
+        $(".card--lose").show();
     } else if (monster.health <= 0) {
         console.log("monster died");
         //Disable attack button
         //move to "win" page
+        $(".card").hide();
+        $(".card--win").show();
     } else {
         //Keep going
     }
