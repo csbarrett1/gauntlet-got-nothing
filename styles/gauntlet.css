@@ -119,6 +119,12 @@ p {
   background-color: #FF4136;
 }
 
+.btn--orange .disabled {
+  border-color: #FF4136;
+  color: white;
+  opacity: 80%;
+}
+
 .btn--blue {
   border-color: #0074D9;
   color: white;

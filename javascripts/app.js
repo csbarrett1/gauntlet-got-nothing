@@ -11,13 +11,7 @@ let $ = require("jquery"),
     // spells = require("./spells.js"),
     weapons = require("./weapons.js");
 
-//Grabs pages (cards) from index.html
-let selectNamePage = $("#player-setup");
-let selectClassPage = $("#class-select");
-let selectWeaponPage = $("#weapon-select");
-let battlegroundPage = $("#battlefield");
-let winPage = $("#player-win");
-let losePage = $("#player-lose");
+
 
 /*
 Code to generate a human player and an orc player
@@ -26,7 +20,7 @@ Code to generate a human player and an orc player
   var orc = new enemies.Orc();
   orc.generateClass();
   orc.generateWeapon();
-  orc.playerName = "Monkey Arse"
+  orc.playerName = "Monkey Arse";
   console.log("orc", orc);
 
   var warrior = new player.Combatants.Human();
@@ -47,10 +41,13 @@ $(document).ready(function() {
    */
   $("#player-setup").show();
 
-  /*
-    When any button with card__link class is clicked,
-    move on to the next view.
-   */
+  //Grabs pages (cards) from index.html
+let selectNamePage = $("#player-setup");
+let selectClassPage = $("#class-select");
+let selectWeaponPage = $("#weapon-select");
+let battlegroundPage = $("#battlefield");
+let winPage = $("#player-win");
+let losePage = $("#player-lose");
   
   $(".class__link").click(function(e) {
     if (e.target.id !== "") {
@@ -75,8 +72,32 @@ $(document).ready(function() {
   $(".play_again").click(function(e) {
     location.reload();
   });
-        
 
+
+  // Surprise functionality both generates weapons and move you on to the next page
+  $("#surprise_class").click(function(e) {
+    warrior.generateClass();
+    $(".card").hide();
+    $(".card--weapon").show();
+  });
+
+  $("#surprise_weapon").click(function(e){
+    warrior.generateWeapon();
+    $(".card").hide();
+    $(".card--battleground").show();
+  });
+
+  $("#player-name").keyup(function(e){
+    if ($("#player-name").val() !== "") {
+    $($("#player-setup").find(".btn--orange")[0]).removeClass('disabled');
+    }
+  });
+  
+        
+  /*
+    When any button with card__link class is clicked,
+    move on to the next view.
+   */
   $(".card__link").click(function(e) {
     var nextCard = $(this).attr("next");
     var moveAlong = false;
@@ -84,29 +105,34 @@ $(document).ready(function() {
     switch (nextCard) {
       case "card--class":
         warrior.setName($("#player-name").val());
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = ($("#player-name").val() !== "")
         break;
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
         if (selectedClass === "surprise_class") {
           warrior.generateClass();
-        } else {
+        } else if (selectedClass !== null){
           warrior.setClass(selectedClass);
         }
+        moveAlong = ($("#player-name").val() !== "" && selectedClass !== null);
         break;
       case "card--battleground":
-        moveAlong = ($("#player-name").val() !== "");
         if (selectedWeapon === "surprise_weapon") {
           warrior.generateWeapon();
-        } else {
+        } else if (selectedWeapon !== null) {
           warrior.setWeapon(selectedWeapon);
         }
+        moveAlong = ($("#player-name").val() && selectedClass !== null && selectedWeapon !== null);
         break;
     }
 
     if (moveAlong) {
+      $(".btn--orange").removeClass('disabled');
       $(".card").hide();
       $("." + nextCard).show();
+    }
+
+    if (!moveAlong) {
+      $(".btn--orange").addClass('disabled');
     }
   });
 
