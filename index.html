@@ -33,8 +33,7 @@
           <div>CHOOSE YOUR CHARACTER</div>
         </div>
         <div class="choose_class">
-          <p class="subtext">You enter a large atrium. At some point, this might have been an opulent guild hall, but it appears as though no one has taken care of it in years.  Moss and ivy anchor banners to the worn stone walls. As you approach the Elder, you notice a bard, clearly driven mad, in the corner, rocking back and forth, humming and muttering about monkeybutts. The Elder sighs wearily.</p><!-- 
-          <p class="subtext">"Another adventurer?  Very well.  Choose your class wisely, ${this.PlayerName}. Every class has advantages and disadvantages.  Please choose quickly, or the bard will start singing, and nobody wants that."</p> -->
+          <p class="subtext">You enter a large atrium. At some point, this might have been an opulent guild hall, but it appears as though no one has taken care of it in years.  Moss and ivy anchor banners to the worn stone walls. As you approach the Elder, you notice a bard, clearly driven mad, in the corner, rocking back and forth, humming and muttering about monkeybutts. The Elder sighs wearily.</p>
         </div>
       </div>
 
@@ -160,7 +159,6 @@
         </div>
         <div class="choose_weapon">
           <p class="subtext">The Elder gestures to an assortment of weapons on the wall behind him.</p>
-          <p class="subtext">"You will also need to select a weapon before entering the battle chamber, ${this.PlayerName}. You may only choose one."</p>
         </div>
       </div>
 
@@ -248,14 +246,10 @@
       </section>
 
       <section class="battlefield">
-        <div class="col-sm-3">
+       <div class="col-sm-3">
           <div id="human player">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 header" id="player_name">Name</div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-12 img">
-              <img src="img/warrior.png" alt="">
-            </div>
+            <div class="col-sm-12 header name player_name" id="player_name"></div>
+              <img src="img/warrior.png" class="col-sm-12 img" alt="">
             <div class="col-sm-12 progress_bar">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
@@ -271,19 +265,15 @@
 
         <div class="col-sm-3">
           <div id="opponent player">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-8 header">Monkey Arse</div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-12 img">
-              <img src="img/orc1.png" alt="">
-            </div>
-          </div>
+            <div class="col-sm-12 header name">MONKEY ARSE</div>
+              <img src="img/orc1.png" class="col-sm-12 img" alt="">
             <div class="col-sm-12 progress_bar">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                 </div>
               </div>
             </div>
+          </div>
         </div>
         <div class="col-sm-12">
         <div class="col-sm-5"></div>
@@ -301,23 +291,15 @@
       <section class="page_head">
         <div class="header card__prompt">
           <div>defeat with magic</div>
-          <div>
-            <p class="subtext">
-              Bitch, you are magic. You don't get to pick a weapon. You get to use magic. You are pushed through a door into a round room. A stone door slams closed behind you. A similar stone door slides open across the room. A hideous monster with ${this.skinColor} stomps in, wielding a ${this.weapon}.  A battle cry echoes around the chamber. You suddenly realize that, much like the Thunderdome, only one of you is leaving. You advance forward to face your foe.
-            </p>
-          </div>
+          <div class="choose_magic"></div>
         </div>
       </section>
 
       <section class="battlefield">
-        <div class="col-sm-3">
+      <div class="col-sm-3">
           <div id="human player">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 header" id="player_name">Name</div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-12 img">
-              <img src="img/warrior.png" alt="">
-            </div>
+            <div class="col-sm-12 header name player_name" id="player_name"></div>
+              <img src="img/warrior.png" class="col-sm-12 img" alt="">
             <div class="col-sm-12 progress_bar">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
@@ -333,21 +315,18 @@
 
         <div class="col-sm-3">
           <div id="opponent player">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-8 header">Monkey Arse</div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-12 img">
-              <img src="img/orc1.png" alt="">
-            </div>
-          </div>
+            <div class="col-sm-12 header name">MONKEY ARSE</div>
+              <img src="img/orc1.png" class="col-sm-12 img" alt="">
             <div class="col-sm-12 progress_bar">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
+      <div class="col-sm-12 magic_spells">
         <div class = "row">
           <div class="col-md-1"></div>
           <div class="col-md-10">
@@ -376,6 +355,7 @@
           </div>
           <div class="col-md-1"></div>
         </div>
+      </div>
     </section>
   </section>
 
