@@ -1,8 +1,24 @@
 body {
   font-family: "Lato", "Helvetica", "sans-serif";
-  margin: 0;
-  padding: 10px;
+  padding: 100px;
   font-size: 3em;
+  background: none;
+}
+
+html { 
+  background: url(../img/ggn_background.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+#game-container {
+  height: 600px;
+  overflow: auto;
+  margin-top: 150px;
+  overflow-x: hidden;
 }
 
 .field {
@@ -15,6 +31,7 @@ body {
   text-align: center;
   min-width: 500px;
 }
+
 
 p {
   font-size: 12px;
@@ -74,11 +91,13 @@ p {
   border-bottom: 3px solid black;
 }
 
-.header {
-  background-color: #66CCFF;
-  border: 2px solid black;
-  border-radius: 10px;
-  height: 100%;
+.header, .subtext {
+  color: white;
+}
+
+.subtext {
+  font-size: 18px;
+  text-transform: none;
 }
 
 .card__prompt {
@@ -92,6 +111,11 @@ p {
   font-size: 1.1em;
   margin: 30px 0 0 0;
   text-align: center;
+}
+
+.page_head {
+  background-color: rgba(75, 75, 75, 0.75);
+  padding: 20px;
 }
 
 
