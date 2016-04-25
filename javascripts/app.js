@@ -3,7 +3,7 @@
 
 //BROWSERIFY ENTRY FILE: Requirements
 //Now everytime we need to call a function or variable in these JS files, we will need to reference it as enemies.monster, etc
-let $ = require("jquery"),
+var $ = require("jquery"),
     attack = require("./attack.js"),
     classes = require("./classes.js"),
     enemies = require("./enemies.js"),
@@ -158,9 +158,9 @@ $(document).ready(function() {
 
 
   //WIN/LOSE SCREENS: Player has option to start over
-  $(".play_again").click(function(e) {
-    location.reload();
-  });
+  // $(".play_again").click(function(e) {
+  //   location.reload();
+  // });
 
   
   /*

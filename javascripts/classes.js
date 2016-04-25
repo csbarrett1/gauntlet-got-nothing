@@ -1,7 +1,7 @@
 "use strict";
 
 //Browserify Dependencies
-let $ = require("jquery");
+var $ = require("jquery");
 
 
 //Main GuildHall object that holds all classes a player can select

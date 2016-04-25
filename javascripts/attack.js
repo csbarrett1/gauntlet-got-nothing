@@ -1,7 +1,7 @@
 "use strict";
 
 //Browserify Dependencies
-let $ = require("jquery");
+var $ = require("jquery");
 
 //Attack time counter
 let attackTimes = 0;

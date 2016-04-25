@@ -1,7 +1,7 @@
 "use strict";
 
 //Browserify Dependencies
-let $ = require("jquery");
+var $ = require("jquery");
 
 //Main Weapons object that holds all weapons a player can select
 var Weapons = {};

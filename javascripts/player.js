@@ -1,7 +1,7 @@
 "use strict";
 
 //Browserify Dependencies
-let $ = require("jquery"),
+var $ = require("jquery"),
     classes = require("./classes.js"),
     enemies = require("./enemies.js"),
     player = require("./player.js"),
