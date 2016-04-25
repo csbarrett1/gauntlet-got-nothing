@@ -129,7 +129,7 @@ GuildHall.Sorcerer.prototype = new GuildHall.Mage();
 
 GuildHall.Stealth = function() {
   this.name = "Stealth";
-  this.healthBonus = this.healthBonus - 10;
+  this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
 };
