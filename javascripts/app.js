@@ -127,7 +127,7 @@ $(document).ready(function() {
         }
         moveAlong = ($("#player-name").val() !== "" && selectedClass !== null);
         break;
-      case "card--battleground":
+      case "card--battleground--for--magic":
         if (selectedWeapon === "surprise_weapon") {
           warrior.generateWeapon();
         } else if (selectedWeapon !== null) {
