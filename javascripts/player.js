@@ -54,7 +54,7 @@ Combatants.Player.prototype.setWeapon = function(newWeapon) {
 };
 
 Combatants.Player.prototype.setClass = function(newClass) {
-  this.class = newClass;
+  this.class = new classes.GuildHall[newClass]();
 };
 
 Combatants.Player.prototype.setName = function(newName) {

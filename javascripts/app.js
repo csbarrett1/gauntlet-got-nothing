@@ -104,6 +104,13 @@ $(document).ready(function() {
       $("#weaponHasBeenSelected").removeClass('disabled');
     }
   }
+
+  var checkToSeeIfMagic = function() {
+      if (warrior.class.magical === true) {
+      $(".card").hide();
+      $(".card--battleground--for--magic").show();
+    }
+  };
   
         
   /*
@@ -125,9 +132,10 @@ $(document).ready(function() {
         } else if (selectedClass !== null){
           warrior.setClass(selectedClass);
         }
-        moveAlong = ($("#player-name").val() !== "" && selectedClass !== null);
+        checkToSeeIfMagic();
+        moveAlong = ($("#player-name").val() !== "" && selectedClass !== null && warrior.class.magical === false);
         break;
-      case "card--battleground--for--magic":
+      case "card--battleground":
         if (selectedWeapon === "surprise_weapon") {
           warrior.generateWeapon();
         } else if (selectedWeapon !== null) {
