@@ -69,7 +69,7 @@ SpellBook.Mysticism = function() {
   this.maxDamage = this.damage + 30;
   this.minDamage = this.damage + 3;
 };
-SpellBook.mysticism.prototype = new SpellBook.Sphere();
+SpellBook.Mysticism.prototype = new SpellBook.Sphere();
 
 SpellBook.Love = function() {
   this.type = "love";
