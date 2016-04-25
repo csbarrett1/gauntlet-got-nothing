@@ -19,7 +19,7 @@ Combatants.Player = function(name) {
   this.class = null;
   this.weapon = null;
 
-  this.playerName = null;
+  this.playerName = $("#player-name");
   this.originalHealth = Math.floor(Math.random() * 40 + 50);
   this.health = this.originalHealth;
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
