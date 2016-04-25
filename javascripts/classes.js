@@ -1,13 +1,7 @@
 "use strict";
 
-//To-do: Make sure to list dependencies here 
+//Browserify Dependencies
 let $ = require("jquery");
-    // attack = require("./attack.js"),
-    // classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
-    // player = require("./player.js"),
-    // spells = require("./spells.js"),
-    // weapons = require("./weapons.js");
 
 
 //Main GuildHall object that holds all classes a player can select

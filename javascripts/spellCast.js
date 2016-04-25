@@ -69,19 +69,12 @@ function attackAction(attacker, opponent) {
 
 //This is what happens if attack button is pressed
 function attackSequence(human, monster, typeOfSpellCast) {
-    console.log("human", human);
-    console.log("monster", monster);
-    console.log("monster weak?", monster.class.elementWeaknesses);
     //Hide attack button
     
     spellAttackAction(human, monster, typeOfSpellCast);
-    console.log("human health", human.health);
-    console.log("monster health", monster.health);
     //set timeout
     
     attackAction(monster, human);
-    console.log("human health", human.health);
-    console.log("monster health", monster.health);
     //Show attack button
     attackTimes++;
     checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
@@ -90,13 +83,11 @@ function attackSequence(human, monster, typeOfSpellCast) {
 
 function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
     if (human.health <= 0) {
-        console.log("human died");
         //Disable attack button
         //move to "lose" page
         $(".card").hide();
         $(".card--lose").show();
     } else if (monster.health <= 0) {
-        console.log("monster died");
         //Disable attack button
         //move to "win" page
         $(".card").hide();
@@ -117,12 +108,6 @@ function reduceStrength(attackTimes, human, monster) {
 
 
 module.exports = {
-  calculateAttackForMagicSpell,
-  calculateAttackDamage,
-  spellAttackAction,
-  attackAction,
   attackSequence,
-  checkHealthToSeeIfOneOfTheseBitchesDied,
-  reduceStrength,
   attackTimes
 };

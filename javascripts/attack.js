@@ -1,13 +1,10 @@
 "use strict";
 
-//To-do: Make sure to list dependencies here 
-
-//To-do: Change all playerX and playerY to appropriate player v opponent var
-let attackTimes = 0;
+//Browserify Dependencies
 let $ = require("jquery");
 
-//To-do: jQuery reference to attack button
-var attackButton = $("#attackButton");
+//Attack time counter
+let attackTimes = 0;
 
 //Calculate how much damage each player's attack is
 function calculateAttackDamage(player) {
@@ -60,13 +57,11 @@ function attackSequence(human, monster) {
 
 function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
     if (human.health <= 0) {
-        console.log("human died");
         //Disable attack button
         //move to "lose" page
         $(".card").hide();
         $(".card--lose").show();
     } else if (monster.health <= 0) {
-        console.log("monster died");
         //Disable attack button
         //move to "win" page
         $(".card").hide();
@@ -87,10 +82,6 @@ function reduceStrength(attackTimes, human, monster) {
 
 
 module.exports = {
-  calculateAttackDamage,
-  attackAction,
   attackSequence,
-  checkHealthToSeeIfOneOfTheseBitchesDied,
-  reduceStrength,
   attackTimes
 };
