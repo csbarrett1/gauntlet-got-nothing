@@ -44,6 +44,7 @@ GuildHall.Warrior = function() {
   this.name = "Warrior";
   this.healthBonus = this.healthBonus + 25;
   this.strengthBonus = this.strengthBonus + 30;
+  this.elementWeaknesses = ["lightning", "fire"]
 };
 GuildHall.Warrior.prototype = new GuildHall.Fighter();
 
@@ -58,6 +59,7 @@ GuildHall.Berserker = function() {
   this.name = "Berserker";
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
+  this.elementWeaknesses = ["water", "earth"]
 };
 GuildHall.Berserker.prototype = new GuildHall.Fighter();
 
@@ -91,6 +93,7 @@ GuildHall.Shaman = function() {
   this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.elementWeaknesses = ["mysticism", "love"]
 };
 GuildHall.Shaman.prototype = new GuildHall.Mage();
 
