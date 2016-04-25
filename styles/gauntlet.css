@@ -303,3 +303,34 @@ lose screen
   display: block;
 }
 
+
+/*Magic Class Battleground Styling*/
+.spell__cast {
+  background: transparent;
+}
+
+.spell-icon {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FF4136;
+  border-radius: 100%
+}
+
+.spell-icon {
+  border-radius: 50%;
+  -webkit-transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  -ms-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.spell-icon:hover {
+  box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.8);
+  -webkit-transform:rotate(360deg);
+  -moz-transform:rotate(360deg);
+  -o-transform:rotate(360deg);
+  -ms-transform:rotate(360deg);
+  transform:rotate(360deg);
+}
+

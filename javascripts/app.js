@@ -8,7 +8,8 @@ let $ = require("jquery"),
     classes = require("./classes.js"),
     enemies = require("./enemies.js"),
     player = require("./player.js"),
-    // spells = require("./spells.js"),
+    spells = require("./spells.js"),
+    spellCast = require("./spellCast.js"),
     weapons = require("./weapons.js");
 
 
@@ -16,81 +17,36 @@ let $ = require("jquery"),
 /*
 Code to generate a human player and an orc player
  */
+var orc = new enemies.Orc();
+orc.generateClass();
+orc.generateWeapon();
+orc.playerName = "Monkey Arse";
 
-  var orc = new enemies.Orc();
-  orc.generateClass();
-  orc.generateWeapon();
-  orc.playerName = "Monkey Arse";
-  console.log("orc", orc);
-
-  var warrior = new player.Combatants.Human();
+var warrior = new player.Combatants.Human();
       
-/*
-  Test code to generate a spell
- */
-        // var spell = new Gauntlet.SpellBook.Sphere();
-        // console.log("spell: ", spell.toString());
 
+//jQuery reference to spell buttons
+var lightningSpellButton = $("#lightningSpellLink");
+var fireSpellButton = $("#fireSpellLink");
+var waterSpellButton = $("#waterSpellLink");
+var earthSpellButton = $("#earthSpellLink");
+var mysticismSpellButton = $("#mysticismSpellLink");
+var loveSpellButton = $("#loveSpellLink");
 
+//Variables for player setup begin at null until they make a selection
+var selectedClass = null;
+var selectedWeapon = null;
+
+//Where all the magic happens
 $(document).ready(function() {
-  var selectedClass = null;
-  var selectedWeapon = null;
 
-  /*
-    Show the initial view that accepts player name
-   */
+  //Show the initial view that accepts player name
   $("#player-setup").show();
+
+  //Disable buttons until user inputs their selection
   $(".btn--orange").addClass('disabled');
 
-  $("#player-name").keyup(function(e) {
-    disabledButtonCheck();
-  });
-  
-  $(".class__link").click(function(e) {
-    $(".class__link").removeClass('selected');
-    $(e.currentTarget).addClass('selected');
-    if (e.target.id !== "") {
-      selectedClass = e.target.id;
-    } else {
-      selectedClass = e.target.closest(".class__link").id;
-    }
-    disabledButtonCheck();
-  });
-
-  $(".weapon__link").click(function(e){
-    $(".weapon__link").removeClass('selected');
-    $(e.currentTarget).addClass('selected');
-    if (e.target.id !== "") {
-      selectedWeapon = e.target.id;
-    } else {
-      selectedWeapon = e.target.closest(".weapon__link").id;
-    }
-    disabledButtonCheck();
-  });
-
-  $("#attackBtn").click(function(e) {
-    attack.attackSequence(warrior, orc);
-  });
-
-  $(".play_again").click(function(e) {
-    location.reload();
-  });
-
-
-  // Surprise functionality both generates weapons and move you on to the next page
-  $("#surprise_class").click(function(e) {
-    warrior.generateClass();
-    $(".card").hide();
-    $(".card--weapon").show();
-  });
-
-  $("#surprise_weapon").click(function(e){
-    warrior.generateWeapon();
-    $(".card").hide();
-    $(".card--battleground").show();
-  });
-
-
+  //Checks to see if disabled buttons should be enabled again based on user input
   function disabledButtonCheck() {
     if ($("#player-name").val() !== "") {
       $("#nameWasInput").removeClass('disabled');
@@ -104,8 +60,109 @@ $(document).ready(function() {
       $("#weaponHasBeenSelected").removeClass('disabled');
     }
   }
+
+  //NAME ENTER PAGE: If user has entered any characters, system will check if the button should be enabled again
+  $("#player-name").keyup(function(e) {
+    disabledButtonCheck();
+  });
   
-        
+  //SELECT CLASS PAGE: If user has selected any input, system will check if the button should be enabled again and assign the selected class to the warrior object
+  $(".class__link").click(function(e) {
+    $(".class__link").removeClass('selected');
+    $(e.currentTarget).addClass('selected');
+    if (e.target.id !== "") {
+      selectedClass = e.target.id;
+    } else {
+      selectedClass = e.target.closest(".class__link").id;
+    }
+    disabledButtonCheck();
+  });
+
+  //SELECT CLASS PAGE: SURPRISE functionality both generates classes for warrior object and moves you on to the next page
+  $("#surprise_class").click(function(e) {
+    warrior.generateClass();
+    var thisBitchIsMagic = checkToSeeIfMagic();
+    if (!thisBitchIsMagic) {
+      $(".card").hide();
+      $(".card--weapon").show();
+    }
+  });
+
+  //SELECT CLASS PAGE: If user is MAGIC, it will skip weapon page and bring them straight to battlegrounds(magic)
+   var checkToSeeIfMagic = function() {
+    var thisBitchIsMagic = false;
+      if (warrior.class.magical === true || warrior.magical === true) {
+        $(".card").hide();
+        $(".card--battleground--for--magic").show();
+      thisBitchIsMagic = true;
+    }
+    return thisBitchIsMagic;
+  };
+
+  //SELECT WEAPON PAGE: If user has selected any input, system will check if the button should be enabled again and assign the selected weapon to the warrior object
+  $(".weapon__link").click(function(e){
+    $(".weapon__link").removeClass('selected');
+    $(e.currentTarget).addClass('selected');
+    if (e.target.id !== "") {
+      selectedWeapon = e.target.id;
+    } else {
+      selectedWeapon = e.target.closest(".weapon__link").id;
+    }
+    disabledButtonCheck();
+  });
+
+  //SELECT WEAPON PAGE: SURPRISE functionality both generates weapon for warrior object and moves you on to the next page
+  $("#surprise_weapon").click(function(e){
+    warrior.generateWeapon();
+    $(".card").hide();
+    $(".card--battleground").show();
+  });
+
+  //BATTLEGROUND(NON-MAGIC)
+  $("#attackBtn").click(function(e) {
+    attack.attackSequence(warrior, orc);
+  });
+
+  //BATTLEGROUND(MAGIC)
+  // All of the spells for magic class!
+  lightningSpellButton.click(function(e) {
+    var lightningSpell = new spells.SpellBook.Lightning();
+    spellCast.attackSequence(warrior, orc, lightningSpell);
+  });
+
+  fireSpellButton.click(function(e) {
+    var fireSpell = new spells.SpellBook.Fire();
+    spellCast.attackSequence(warrior, orc, fireSpell);
+  });
+
+  waterSpellButton.click(function(e) {
+    var waterSpell = new spells.SpellBook.Water();
+    spellCast.attackSequence(warrior, orc, waterSpell);
+  });
+
+  earthSpellButton.click(function(e) {
+    var earthSpell = new spells.SpellBook.Earth();
+    spellCast.attackSequence(warrior, orc, earthSpell);
+  });
+
+  mysticismSpellButton.click(function(e) {
+    var mysticismSpell = new spells.SpellBook.Mysticism();
+    spellCast.attackSequence(warrior, orc, mysticismSpell);
+  });
+
+  loveSpellButton.click(function(e) {
+    var loveSpell = new spells.SpellBook.Love();
+    spellCast.attackSequence(warrior, orc, loveSpell);
+  });
+  //End of Magic Class Spells
+
+
+  //WIN/LOSE SCREENS: Player has option to start over
+  $(".play_again").click(function(e) {
+    location.reload();
+  });
+
+  
   /*
     When any button with card__link class is clicked,
     move on to the next view.
@@ -125,7 +182,8 @@ $(document).ready(function() {
         } else if (selectedClass !== null){
           warrior.setClass(selectedClass);
         }
-        moveAlong = ($("#player-name").val() !== "" && selectedClass !== null);
+        checkToSeeIfMagic();
+        moveAlong = ($("#player-name").val() !== "" && selectedClass !== null && warrior.class.magical === false);
         break;
       case "card--battleground":
         if (selectedWeapon === "surprise_weapon") {
@@ -151,9 +209,6 @@ $(document).ready(function() {
     $(".card").hide();
     $("." + previousCard).show();
   });
-
-
-
 });
 
 

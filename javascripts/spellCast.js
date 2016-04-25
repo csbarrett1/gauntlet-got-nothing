@@ -3,8 +3,20 @@
 //Browserify Dependencies
 let $ = require("jquery");
 
-//Attack time counter
 let attackTimes = 0;
+
+function calculateAttackForMagicSpell(player, opponent, typeOfSpellCast) {
+    var maximumAttackDamage = typeOfSpellCast.maxDamage;
+    var minimumAttackDamage = typeOfSpellCast.minDamage;
+    var playerCurrentStat = ((player.health + player.strength + player.intelligence)/3);
+    var attackDamage = 0;
+    if (opponent.class.elementWeaknesses.indexOf[typeOfSpellCast] >= 0) {
+        attackDamage = Math.floor(maximumAttackDamage);
+    } else {
+        attackDamage = Math.floor(minimumAttackDamage);
+    }
+    return attackDamage;
+}
 
 //Calculate how much damage each player's attack is
 function calculateAttackDamage(player) {
@@ -26,6 +38,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function spellAttackAction (attacker, opponent, typeOfSpellCast) {
+    //Give attacker "readyToAttack" class and remove "standby" class
+    
+    //Combatant's attack score is caluclated
+    var damageToOpponentHealth = calculateAttackForMagicSpell(attacker, opponent, typeOfSpellCast);
+    //Opponent's health is reduced by attack score
+    opponent.health = opponent.health - damageToOpponentHealth;
+    //Give opponent "beingAttacked" class - for set period of time - then remove
+    
+    //Display attack score and opponents new health 
+    
+    //Remove attacker "readyToAttack" class and add "standby" class
+}
+
 function attackAction(attacker, opponent) {
     //Give attacker "readyToAttack" class and remove "standby" class
     
@@ -38,14 +64,14 @@ function attackAction(attacker, opponent) {
     //Display attack score and opponents new health 
     
     //Remove attacker "readyToAttack" class and add "standby" class
-
 }
 
+
 //This is what happens if attack button is pressed
-function attackSequence(human, monster) {
+function attackSequence(human, monster, typeOfSpellCast) {
     //Hide attack button
     
-    attackAction(human, monster);
+    spellAttackAction(human, monster, typeOfSpellCast);
     //set timeout
     
     attackAction(monster, human);

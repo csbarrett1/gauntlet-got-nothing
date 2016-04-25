@@ -1,17 +1,11 @@
 "use strict";
 
-//To-do: Make sure to list dependencies here 
+//Browserify Dependencies
 let $ = require("jquery"),
-    // attack = require("./attack.js"),
     classes = require("./classes.js"),
-    // enemies = require("./enemies.js"),
     player = require("./player.js"),
-    // spells = require("./spells.js"),
     weapons = require("./weapons.js");
 
-//To Do: Could add more enemy "species"
-
-console.log("combatants", player.Combatants);
 
 var Orc = function() {
   this.health = this.health + 20;
