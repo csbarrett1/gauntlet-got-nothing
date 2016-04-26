@@ -99,6 +99,8 @@ $(document).ready(function() {
       if (warrior.class.magical === true || warrior.magical === true) {
         $(".card").hide();
         $(".card--battleground--for--magic").show();
+        spellCast.populateBattlegroundForMagic(warrior, orc, $("#magicAttackImage"), $("#magicOpponentImage"), "Ready", "Ready"); 
+        $("#textboxMagic").html(`<p class = "initialStats">Brave and magical ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
       thisBitchIsMagic = true;
     }
     return thisBitchIsMagic;
@@ -133,39 +135,40 @@ $(document).ready(function() {
   // All of the spells for magic class!
   lightningSpellButton.click(function(e) {
     var lightningSpell = new spells.SpellBook.Lightning();
-    spellCast.attackSequence(warrior, orc, lightningSpell);
+    spellCast.attackSpellSequence(warrior, orc, lightningSpell);
   });
 
   fireSpellButton.click(function(e) {
     var fireSpell = new spells.SpellBook.Fire();
-    spellCast.attackSequence(warrior, orc, fireSpell);
+    spellCast.attackSpellSequence(warrior, orc, fireSpell);
   });
 
   waterSpellButton.click(function(e) {
     var waterSpell = new spells.SpellBook.Water();
-    spellCast.attackSequence(warrior, orc, waterSpell);
+    console.log("waterSpell", waterSpell);
+    spellCast.attackSpellSequence(warrior, orc, waterSpell);
   });
 
   earthSpellButton.click(function(e) {
     var earthSpell = new spells.SpellBook.Earth();
-    spellCast.attackSequence(warrior, orc, earthSpell);
+    spellCast.attackSpellSequence(warrior, orc, earthSpell);
   });
 
   mysticismSpellButton.click(function(e) {
     var mysticismSpell = new spells.SpellBook.Mysticism();
-    spellCast.attackSequence(warrior, orc, mysticismSpell);
+    spellCast.attackSpellSequence(warrior, orc, mysticismSpell);
   });
 
   loveSpellButton.click(function(e) {
     var loveSpell = new spells.SpellBook.Love();
-    spellCast.attackSequence(warrior, orc, loveSpell);
+    spellCast.attackSpellSequence(warrior, orc, loveSpell);
   });
   //End of Magic Class Spells
 
-  //WIN/LOSE SCREENS: Player has option to start over
-  // $(".play_again").click(function(e) {
-  //   location.reload();
-  // });
+  // WIN/LOSE SCREENS: Player has option to start over
+  $(".play_again").click(function(e) {
+    location.reload();
+  });
 
   
   /*
