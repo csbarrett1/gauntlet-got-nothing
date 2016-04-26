@@ -1,10 +1,65 @@
 "use strict";
 
 //Browserify Dependencies
-var $ = require("jquery");
+var $ = require("jquery"),
+    app = require("./app.js");
+
 
 //Attack time counter
 let attackTimes = 0;
+
+// Populating images to battlefield
+function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state) {
+
+    function checkWhichWarriorImageToLoad (warrior) {
+        var imagePrefix = null;
+        console.log("warrior", warrior);
+        if (warrior.class.playerClass === "Fighter" ) {
+            imagePrefix = "warrior";
+        }
+        else if (warrior.class.playerClass === "Stealth") {
+            imagePrefix = "berserker";
+        }
+        return imagePrefix;
+    }
+
+    function checkWhichOrcImageToLoad (orc) {
+        var imagePrefix = null;
+        console.log("orc", orc);
+        if (orc.class.name === "Warrior" ) {
+            imagePrefix = "orc1";
+        }
+        else if (orc.class.name === "Berserker") {
+            imagePrefix = "orc2";
+        }
+        else if (orc.class.name === "Shaman") {
+            imagePrefix = "orc3";
+        }
+        return imagePrefix;
+    }
+
+    function createWarriorImage (player, state) {
+        var image = "";
+        var prefix = checkWhichWarriorImageToLoad(player);
+        image = "../img/" + prefix + state + ".png";
+        return image;
+    }
+
+    function createOrcImage (player, state) {
+        var image = "";
+        var prefix = checkWhichOrcImageToLoad(player);
+        image = "../img/" + prefix + state + ".png";
+        return image;
+    }
+
+    function domAppend (playerHolder1, playerHolder2) {
+        var warriorImage = createWarriorImage(warrior, state);
+        var orcImage = createOrcImage(orc, state);
+        playerHolder1.attr("src", warriorImage);
+        playerHolder2.attr("src", orcImage);
+    }
+    domAppend(playerHolder1, playerHolder2);
+}
 
 //Calculate how much damage each player's attack is
 function calculateAttackDamage(player) {
@@ -33,9 +88,12 @@ function attackAction(attacker, opponent) {
     var damageToOpponentHealth = calculateAttackDamage(attacker);
     //Opponent's health is reduced by attack score
     opponent.health = opponent.health - damageToOpponentHealth;
-    //Give opponent "beingAttacked" class - for set period of time - then remove
+    //Attacker "strike state" fade, Opponent "tada" animation
     
-    //Display attack score and opponents new health 
+    // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
+
+    // Opponent progress bar updated.
+
     
     //Remove attacker "readyToAttack" class and add "standby" class
 
@@ -83,5 +141,6 @@ function reduceStrength(attackTimes, human, monster) {
 
 module.exports = {
   attackSequence,
-  attackTimes
+  attackTimes,
+  populateBattleground
 };
