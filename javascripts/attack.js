@@ -105,7 +105,6 @@ function attackSequence(human, monster) {
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
         buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <p class="opponentHealth">' + opponent.playerName + ' health: ' + opponent.health + '</p></p>');
         $("#textbox").html(buildString);
-        // Opponent progress bar updated.
     }
 
     var humanAttackState = "Ready";

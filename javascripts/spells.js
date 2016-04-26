@@ -15,10 +15,6 @@ SpellBook.Spell = function() {
 
   this.damageTypes = ["lightning", "fire", "water", "earth", "mysticism", "love"];
   this.type = "";
-
-  this.toString = function() {
-    return this.name + " of " + this.type + " for " + this.damage + " damage!";
-  };
 };
 
 
