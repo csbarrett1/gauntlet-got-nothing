@@ -73,7 +73,7 @@ Combatants.Human = function() {
   randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
   this.skinColor = this.skinColors[randomSkin];
 
-  this.allowedClasses = ["Warrior", "Valkyrie", "Berserker",  "Monk", "Wizard", "Sorcerer", "Conjurer", "Shaman", "Thief", "Ninja", "Assassin"];
+  this.allowedClasses = ["Warrior", "Valkyrie", "Berserker",  "Monk", "Wizard", "Sorcerer", "Conjurer", "Shaman", "Rogue", "Thief", "Ninja", "Assassin"];
   this.allowedWeapons = ["Dagger", "BroadSword", "WarAxe", "Mace", "Lance", "DoubleAxe"];
 
 

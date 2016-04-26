@@ -135,6 +135,14 @@ GuildHall.Stealth = function() {
 };
 GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
 
+GuildHall.Rogue = function() {
+  this.name = "Rogue";
+  this.healthBonus = this.healthBonus - 15;
+  this.strengthBonus = this.strengthBonus - 25;
+  this.intelligenceBonus = this.intelligenceBonus + 15;
+};
+GuildHall.Rogue.prototype = new GuildHall.Stealth();
+
 GuildHall.Thief = function() {
   this.name = "Thief";
   this.healthBonus = this.healthBonus - 10;

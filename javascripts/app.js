@@ -228,9 +228,11 @@ $(document).ready(function() {
     let chooseClass = $(".choose_class");
     let chooseWeapon = $(".choose_weapon");
     let chooseMagic = $(".choose_magic");
+    let fightScreen = $(".fightScreen");
     chooseClass.append('<p class="subtext">' + "Another adventurer?  Very well.  Choose your class wisely, " + warrior.playerName + ". Every class has advantages and disadvantages.  Please choose quickly, or the bard will start singing, and nobody wants that." + '</p>');
     chooseWeapon.append('<p class="subtext">' + "You will also need to select a weapon before entering the battle chamber, " + warrior.playerName + ". You may only choose one." + '</p>');
     chooseMagic.append('<p class="subtext">' + "Bitch, you are magic. You don't get to pick a weapon. You get to use magic. You are pushed through a door into a round room. A stone door slams closed behind you. A similar stone door slides open across the room. A hideous monster with " + orc.skinColor + " skin stomps in, wielding a " + orc.weapon + ". A battle cry echoes around the chamber. You suddenly realize that, much like the Thunderdome, only one of you is leaving. You advance forward to face your foe." + '</p>');
+    fightScreen.append('<p class="subtext">' + "You are pushed through a door into a round room. A stone door slams closed behind you. A similar stone door slides open across the room. A hideous monster with " + orc.skinColor + " skin stomps in, wielding a " + orc.weapon + ". A battle cry echoes around the chamber. You suddenly realize that, much like the Thunderdome, only one of you is leaving. You advance forward to face your foe." + '</p>');
 
   });
 
