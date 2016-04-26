@@ -127,12 +127,16 @@ $(document).ready(function() {
     console.log("orc health", orc.health);
     console.log("orc og health", orc.originalHealth);
     let oppHealth = $("#opp_health");
-    oppHealth.css("width", ((orc.health / orc.originalHealth) * 100));
+    let oppFinalHealth = (orc.health / orc.originalHealth) * 100;
+
+    oppHealth.css("width", oppFinalHealth + "%");
 
     console.log("warrior health", warrior.health);
     console.log("warrior og health", warrior.originalHealth);
     let playerHealth = $("#player_health");
-    playerHealth.css("width", ((warrior.health / warrior.health) * 100)"%");
+    let playerFinalHealth = (warrior.health / warrior.originalHealth) * 100;
+
+    playerHealth.css("width", playerFinalHealth + "%");
 
     attack.attackSequence(warrior, orc);
   });
