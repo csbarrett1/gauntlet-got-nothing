@@ -125,6 +125,12 @@ $(document).ready(function() {
   //BATTLEGROUND(NON-MAGIC)
   $("#attackBtn").click(function(e) {
     attack.attackSequence(warrior, orc);
+
+    let oppHealth = $("#opp_health");
+    oppHealth.css("width", (orc.health / orc.originalHealth) * 100);
+
+    let playerHealth = $("#player_health");
+    playerHealth.css("width", (warrior.health / warrior.health) * 100);
   });
 
   //BATTLEGROUND(MAGIC)
@@ -159,7 +165,6 @@ $(document).ready(function() {
     spellCast.attackSequence(warrior, orc, loveSpell);
   });
   //End of Magic Class Spells
-
 
   //WIN/LOSE SCREENS: Player has option to start over
   // $(".play_again").click(function(e) {
@@ -208,7 +213,6 @@ $(document).ready(function() {
 
   $("#nameWasInput").click(function() {
     let name = $(".player_name");
-    console.log(warrior.playerName);
     name.html(warrior.playerName.toUpperCase());
 
     let chooseClass = $(".choose_class");
