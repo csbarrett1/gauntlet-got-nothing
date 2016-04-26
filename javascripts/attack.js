@@ -82,20 +82,23 @@ function getRandomInt(min, max) {
 }
 
 function attackAction(attacker, opponent) {
+    var attackState = null;
     //Give attacker "readyToAttack" class and remove "standby" class
-    
+    attackState = "Ready";
     //Combatant's attack score is caluclated
     var damageToOpponentHealth = calculateAttackDamage(attacker);
     //Opponent's health is reduced by attack score
     opponent.health = opponent.health - damageToOpponentHealth;
     //Attacker "strike state" fade, Opponent "tada" animation
-    
+    attackState = "Strike";
     // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
-
+    var buildString = `<p>${attacker.playerName} attacks ${opponent.playerName} with ${attacker.weapon} and does ${damageToOpponentHealth} damage.</p>`;
+    $("#textbox").append(buildString);
     // Opponent progress bar updated.
 
     
     //Remove attacker "readyToAttack" class and add "standby" class
+    attackState = "Ready";
 
 }
 
