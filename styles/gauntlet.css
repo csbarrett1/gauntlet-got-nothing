@@ -1,6 +1,6 @@
 body {
   font-family: "Lato", "Helvetica", "sans-serif";
-  padding: 100px;
+  padding: 50px;
   font-size: 3em;
   background: none;
 }
@@ -15,8 +15,8 @@ html {
 
 
 #game-container {
-  margin-top: 250px;
-  margin-bottom: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .field {
@@ -65,7 +65,7 @@ p {
 }
 
 .img {
-  width: 100%;
+  width: 90%;
 }
 
 .magic_spells {
@@ -73,7 +73,9 @@ p {
 }
 
 .logo {
-  margin-top: -112px;
+  width: 30%;
+  margin-top: -70px;
+  margin-bottom: -10px;
 }
 
 .attack_string {
@@ -83,7 +85,7 @@ p {
 
 #textbox {
   width: 100%;
-  height: 350px;
+  height: 250px;
   margin-top: 7%;
   background-color: rgba(255, 255, 255, .7);
   padding: 10px;
@@ -91,9 +93,24 @@ p {
   overflow: auto;
 }
 
+#textbox p:nth-of-type(1) {
+  color: #6B0000;
+}
+
+#textbox p:nth-of-type(2) {
+  color: #BA0000;
+}
+
 .attackOutput {
   margin-left: 10px;
-  font-size: 17px
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+.opponentHealth{
+  margin-top: 1px;
+  margin-bottom: 3px;
+  font-weight: bold;
 }
 
 .progress_bar {
@@ -118,8 +135,8 @@ p {
 }
 
 .subtext {
-  font-size: 18px;
-  text-transform: none;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .card__prompt {
@@ -137,7 +154,7 @@ p {
 
 .page_head {
   background-color: rgba(75, 75, 75, 0.75);
-  padding: 20px;
+  padding: 10px;
 }
 
 
@@ -179,9 +196,9 @@ p {
 }
 
 .btn--red {
-  border-color: #FF0000;
+  border-color: #FF4136;
   color: white;
-  background-color: #FF0000;
+  background-color: #FF4136;
 }
 
 .btn--yellow {
@@ -228,6 +245,40 @@ p {
   box-shadow:  0px 4px 3px rgba(0,0,0,0.4),
                0px 8px 13px rgba(0,0,0,0.1),
                0px 18px 23px rgba(0,0,0,0.1);
+}
+
+
+
+/*
+Battleground
+ */
+.card--battleground {
+  margin-top: -5px;
+}
+
+
+.fightScreen {
+  margin-bottom: -10px;
+}
+
+.battlefield {
+  margin-top: -5px;
+}
+
+.initialStats {
+  font-size: 16px;
+  padding: 1px;
+  padding-left: 5px;
+  margin: 0;
+  list-style: none
+}
+
+.initialStatsSubtext {
+  font-size: 13px;
+  padding: 1px;
+  padding-left: 5px;
+  margin: 0;
+  list-style: none;
 }
 
 /*
@@ -306,11 +357,9 @@ lose screen
   display: block;
   width: 180px; /* Width of new image */
   height: auto;  /*Height of new image */
-  margin: auto;
+  margin:  0 auto;
   max-width: 100%;
 }
-
-
 
 #monster_win {
   display: block;
@@ -322,12 +371,17 @@ lose screen
 
 .name {
   background-color: rgba(255, 255, 255, 0.75);
-  padding: 20px;
+  padding: 15px;
   color: #252525;
   border-radius: 15px;
+  font-size: 25px;
   text-align: center;
   font-weight: 800;
+  -webkit-box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.75);
 }
+
 
 
 
