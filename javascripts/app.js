@@ -21,6 +21,7 @@ var orc = new enemies.Orc();
 orc.generateClass();
 orc.generateWeapon();
 orc.playerName = "Monkey Arse";
+console.log("orc", orc);
 
 var warrior = new player.Combatants.Human();
       
@@ -186,7 +187,7 @@ $(document).ready(function() {
           warrior.setClass(selectedClass);
         }
         checkToSeeIfMagic();
-        attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready");
+        attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready", "Ready");
         moveAlong = ($("#player-name").val() !== "" && selectedClass !== null && warrior.class.magical === false);
         break;
       case "card--battleground":

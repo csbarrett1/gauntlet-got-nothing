@@ -9,7 +9,7 @@ var $ = require("jquery"),
 let attackTimes = 0;
 
 // Populating images to battlefield
-function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state) {
+function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state, opponentState) {
 
     function checkWhichWarriorImageToLoad (warrior) {
         var imagePrefix = null;
@@ -45,16 +45,16 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state)
         return image;
     }
 
-    function createOrcImage (player, state) {
+    function createOrcImage (player, opponentState) {
         var image = "";
         var prefix = checkWhichOrcImageToLoad(player);
-        image = "../img/" + prefix + state + ".png";
+        image = "../img/" + prefix + opponentState + ".png";
         return image;
     }
 
     function domAppend (playerHolder1, playerHolder2) {
         var warriorImage = createWarriorImage(warrior, state);
-        var orcImage = createOrcImage(orc, state);
+        var orcImage = createOrcImage(orc, opponentState);
         playerHolder1.attr("src", warriorImage);
         playerHolder2.attr("src", orcImage);
     }
@@ -104,12 +104,25 @@ function attackAction(attacker, opponent) {
 
 //This is what happens if attack button is pressed
 function attackSequence(human, monster) {
+    var humanAttackState = "Ready";
+    var monsterAttackState = "Ready";
     //Hide attack button
     
     attackAction(human, monster);
+    humanAttackState = "Strike";
+    // add vars for attackState/opponentState
+    populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
+    humanAttackState = "Ready";
     //set timeout
-    
+    var timeout = setTimeout(function() {
+        populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
+    }, 1000);
     attackAction(monster, human);
+    monsterAttackState = "Strike";
+    var timeoutTwo = setTimeout(function () {
+        populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);}, 1000);
+
+
     //Show attack button
     attackTimes++;
     checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
