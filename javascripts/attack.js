@@ -13,7 +13,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
 
     function checkWhichWarriorImageToLoad (warrior) {
         var imagePrefix = null;
-        console.log("warrior", warrior);
+        // console.log("warrior", warrior);
         if (warrior.class.playerClass === "Fighter" ) {
             imagePrefix = "warrior";
         }
@@ -25,7 +25,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
 
     function checkWhichOrcImageToLoad (orc) {
         var imagePrefix = null;
-        console.log("orc", orc);
+        // console.log("orc", orc);
         if (orc.class.name === "Warrior" ) {
             imagePrefix = "orc1";
         }
@@ -113,6 +113,8 @@ function attackSequence(human, monster) {
     // add vars for attackState/opponentState
     populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
     humanAttackState = "Ready";
+
+    
     //set timeout
     var timeout = setTimeout(function() {
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);

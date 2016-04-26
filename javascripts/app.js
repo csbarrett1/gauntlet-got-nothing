@@ -21,7 +21,7 @@ var orc = new enemies.Orc();
 orc.generateClass();
 orc.generateWeapon();
 orc.playerName = "Monkey Arse";
-console.log("orc", orc);
+// console.log("orc", orc);
 
 var warrior = new player.Combatants.Human();
       
@@ -124,13 +124,17 @@ $(document).ready(function() {
 
   //BATTLEGROUND(NON-MAGIC)
   $("#attackBtn").click(function(e) {
-    attack.attackSequence(warrior, orc);
-
+    console.log("orc health", orc.health);
+    console.log("orc og health", orc.originalHealth);
     let oppHealth = $("#opp_health");
-    oppHealth.css("width", (orc.health / orc.originalHealth) * 100);
+    oppHealth.css("width", ((orc.health / orc.originalHealth) * 100));
 
+    console.log("warrior health", warrior.health);
+    console.log("warrior og health", warrior.originalHealth);
     let playerHealth = $("#player_health");
-    playerHealth.css("width", (warrior.health / warrior.health) * 100);
+    playerHealth.css("width", ((warrior.health / warrior.health) * 100)"%");
+
+    attack.attackSequence(warrior, orc);
   });
 
   //BATTLEGROUND(MAGIC)
