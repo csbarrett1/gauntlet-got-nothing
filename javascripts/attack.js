@@ -101,6 +101,7 @@ function attackSequence(human, monster) {
         var damageToOpponentHealth = calculateAttackDamage(attacker);
         //Opponent's health is reduced by attack score
         opponent.health = opponent.health - damageToOpponentHealth;
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
         var buildString = `<p class="attackOutput">${attacker.playerName} attacks ${opponent.playerName} with ${attacker.weapon} & does ${damageToOpponentHealth} damage. <b> ${opponent.playerName} health: ${opponent.health}</b></p>`;
         $("#textbox").append(buildString);
