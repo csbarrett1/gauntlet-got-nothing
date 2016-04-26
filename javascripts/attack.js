@@ -13,7 +13,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
 
     function checkWhichWarriorImageToLoad (warrior) {
         var imagePrefix = null;
-        console.log("warrior", warrior);
+        // console.log("warrior", warrior);
         if (warrior.class.playerClass === "Fighter" ) {
             imagePrefix = "warrior";
         }
@@ -25,7 +25,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
 
     function checkWhichOrcImageToLoad (orc) {
         var imagePrefix = null;
-        console.log("orc", orc);
+        // console.log("orc", orc);
         if (orc.class.name === "Warrior" ) {
             imagePrefix = "orc1";
         }
@@ -91,6 +91,7 @@ do {curDate = new Date(); }
 while(curDate-date < millis);
 }
 
+var buildString = [];
 
 //This is what happens if attack button is pressed
 function attackSequence(human, monster) {
@@ -103,8 +104,8 @@ function attackSequence(human, monster) {
         opponent.health = opponent.health - damageToOpponentHealth;
         checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
-        var buildString = `<p class="attackOutput">${attacker.playerName} attacks ${opponent.playerName} with ${attacker.weapon} & does ${damageToOpponentHealth} damage. <b> ${opponent.playerName} health: ${opponent.health}</b></p>`;
-        $("#textbox").append(buildString);
+        buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <b> <p>' + opponent.playerName + ' health: ' + opponent.health + '</b></p></p>');
+        $("#textbox").html(buildString);
         // Opponent progress bar updated.
     }
 
