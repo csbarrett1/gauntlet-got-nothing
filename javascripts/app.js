@@ -210,6 +210,8 @@ $(document).ready(function() {
           warrior.setWeapon(selectedWeapon);
         }
         moveAlong = ($("#player-name").val() && selectedClass !== null && selectedWeapon !== null);
+        attackerImageHolder.addClass('animated slideInLeft');
+        opponentImageHolder.addClass('animated slideInRight');
         break;
     }
 
