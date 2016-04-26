@@ -11,6 +11,12 @@
 
 <body>
 
+  <div class="col-sm-12"></div>
+    <div class="col-sm-4"></div>
+    <img class="col-sm-4 logo" src="img/ggn_logo_glow_720.png" alt="">
+    <div class="col-sm-4"></div>
+  </div>
+
   <article id="game-container">
     <section id="player-setup" class="card card--name">
       <div class="card__prompt">
@@ -363,30 +369,15 @@
     <section id="player-win" class="card card--win">
       <div class="container-fluid">
         <div class="row">
-          <div class = "top_banner col-md"><img class="center-block" src="img/you_win_banner.png" alt="A Winner Is You!">
-            <h1 class="winner_head">You Win!</h1>
-          </div>
-          <p>You have defeated your opponent! If this were a better town you'd happened upon, the townspeople would be cheering, and you would be lavished with gold and adulation. However, you stopped off in the wrong town, ${this.PlayerName}. But, at least you live to fight another day.</p>
+          <div class = "top_banner col-md"><img class="center-block" src="img/you_win_banner.png" alt="A Winner Is You!"></div>
         </div>
 
-        <div class="row">
-          <div class = "player_win col-md-4">
-            <img id="player_win" src="img/warrior.png" alt="hero win">
-          </div>
-          <div class ="fight_stats col-md-4">
-            <img id="fight_stats" src="img/stats-shield.jpg">
-            <p><h3>You defeated the monster in {x} rounds.</h3></p>
-          </div>
-
-          <div class = "monster_lose col-md-4">
-            <img id="monster_lose" src="img/orc1.png" alt="monster lose">
-          </div>
-        </div>
-
-          <div class="row">
-            <div class="button col-md">
-              <button class="play_again btn-lg center-block">Play Again?</button>
-            </div>
+          <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <a class="col-sm-4 class__link btn btn--big btn--white" href="javascript:history.go(0)">
+              <span class="btn__text">Play Again?</span>
+            </a>
+            <div class="col-sm-4"></div>
           </div>
         </div>
       </section>
@@ -395,32 +386,15 @@
         <div class="container-fluid">
           <div class="row">
             <div class = "top_banner col-md">
-              <img class="center-block" src="img/you_win_banner.png" alt="A Loser Is You!">
-                <h1 class="winner_head">You Lost.</h1>
-              </div>
-                <div>
-                 <p>You have been defeated.  You have brought shame to this town, your family, and possibly the entire universe. Try harder next time.</p>
-                </div>
+              <img class="center-block" src="img/you_lose_banner.png" alt="A Loser Is You!"></div>
             </div>
-
-            <div class="row">
-              <div class = "player_lose col-md-4">
-                <img id="player_lose" src="img/warrior.png" alt="hero lose">
-              </div>
-
-              <div class = "fight_stats col-md-4">
-                <img id="fight_stats" src="img/stats-shield.jpg">
-                  <p><h3>You were defeated in {x} rounds.</h3></p>
-              </div>
-
-              <div class = "monster_win col-md-4">
-                <img id="monster_win"src="img/orc1.png" alt="monster win">
-              </div>
-            </div>
-
-            <div class="button col-md">
-              <button class="play_again btn-lg center-block">Play Again?</button>
-            </div>
+          <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <a class="col-sm-4 class__link btn btn--big btn--white" href="javascript:history.go(0)">
+              <span class="btn__text">Play Again?</span>
+            </a>
+            <div class="col-sm-4"></div>
+          </div>
         </div>
       </section>
   </article>

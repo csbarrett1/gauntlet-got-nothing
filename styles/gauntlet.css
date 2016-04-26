@@ -6,7 +6,7 @@ body {
 }
 
 html { 
-  background: url(../img/ggn_background.png) no-repeat center center fixed; 
+  background: url(../img/ggn_background_blank_720.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -15,10 +15,8 @@ html {
 
 
 #game-container {
-  height: 600px;
-  overflow: auto;
-  margin-top: 150px;
-  overflow-x: hidden;
+  margin-top: 250px;
+  margin-bottom: 100px;
 }
 
 .field {
@@ -71,6 +69,12 @@ p {
 
 .magic_spells {
   margin-top: 20px;
+}
+
+.logo {
+  margin-top: -112px;
+  width: 30
+  %;
 }
 
 #textbox {
@@ -315,9 +319,6 @@ lose screen
   font-weight: 800;
 }
 
-.play_again {
-  display: block;
-}
 
 
 /*Magic Class Battleground Styling*/
