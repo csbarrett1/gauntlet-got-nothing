@@ -1,10 +1,65 @@
 "use strict";
 
 //Browserify Dependencies
-var $ = require("jquery");
+var $ = require("jquery"),
+    app = require("./app.js");
+
 
 //Attack time counter
 let attackTimes = 0;
+
+// Populating images to battlefield
+function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state, opponentState) {
+
+    function checkWhichWarriorImageToLoad (warrior) {
+        var imagePrefix = null;
+        console.log("warrior", warrior);
+        if (warrior.class.playerClass === "Fighter" ) {
+            imagePrefix = "warrior";
+        }
+        else if (warrior.class.playerClass === "Stealth") {
+            imagePrefix = "berserker";
+        }
+        return imagePrefix;
+    }
+
+    function checkWhichOrcImageToLoad (orc) {
+        var imagePrefix = null;
+        console.log("orc", orc);
+        if (orc.class.name === "Warrior" ) {
+            imagePrefix = "orc1";
+        }
+        else if (orc.class.name === "Berserker") {
+            imagePrefix = "orc2";
+        }
+        else if (orc.class.name === "Shaman") {
+            imagePrefix = "orc3";
+        }
+        return imagePrefix;
+    }
+
+    function createWarriorImage (player, state) {
+        var image = "";
+        var prefix = checkWhichWarriorImageToLoad(player);
+        image = "../img/" + prefix + state + ".png";
+        return image;
+    }
+
+    function createOrcImage (player, opponentState) {
+        var image = "";
+        var prefix = checkWhichOrcImageToLoad(player);
+        image = "../img/" + prefix + opponentState + ".png";
+        return image;
+    }
+
+    function domAppend (playerHolder1, playerHolder2) {
+        var warriorImage = createWarriorImage(warrior, state);
+        var orcImage = createOrcImage(orc, opponentState);
+        playerHolder1.attr("src", warriorImage);
+        playerHolder2.attr("src", orcImage);
+    }
+    domAppend(playerHolder1, playerHolder2);
+}
 
 //Calculate how much damage each player's attack is
 function calculateAttackDamage(player) {
@@ -27,28 +82,47 @@ function getRandomInt(min, max) {
 }
 
 function attackAction(attacker, opponent) {
+    var attackState = null;
     //Give attacker "readyToAttack" class and remove "standby" class
-    
+    attackState = "Ready";
     //Combatant's attack score is caluclated
     var damageToOpponentHealth = calculateAttackDamage(attacker);
     //Opponent's health is reduced by attack score
     opponent.health = opponent.health - damageToOpponentHealth;
-    //Give opponent "beingAttacked" class - for set period of time - then remove
-    
-    //Display attack score and opponents new health 
+    //Attacker "strike state" fade, Opponent "tada" animation
+    attackState = "Strike";
+    // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
+    var buildString = `<p>${attacker.playerName} attacks ${opponent.playerName} with ${attacker.weapon} and does ${damageToOpponentHealth} damage.</p>`;
+    $("#textbox").append(buildString);
+    // Opponent progress bar updated.
+
     
     //Remove attacker "readyToAttack" class and add "standby" class
+    attackState = "Ready";
 
 }
 
 //This is what happens if attack button is pressed
 function attackSequence(human, monster) {
+    var humanAttackState = "Ready";
+    var monsterAttackState = "Ready";
     //Hide attack button
     
     attackAction(human, monster);
+    humanAttackState = "Strike";
+    // add vars for attackState/opponentState
+    populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
+    humanAttackState = "Ready";
     //set timeout
-    
+    var timeout = setTimeout(function() {
+        populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
+    }, 1000);
     attackAction(monster, human);
+    monsterAttackState = "Strike";
+    var timeoutTwo = setTimeout(function () {
+        populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);}, 1000);
+
+
     //Show attack button
     attackTimes++;
     checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
@@ -83,5 +157,6 @@ function reduceStrength(attackTimes, human, monster) {
 
 module.exports = {
   attackSequence,
-  attackTimes
+  attackTimes,
+  populateBattleground
 };

@@ -30,6 +30,7 @@ GuildHall.PlayerClass = function() {
 GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
+  this.playerClass = "Fighter";
 };
 GuildHall.Fighter.prototype = new GuildHall.PlayerClass();
 
@@ -77,6 +78,7 @@ GuildHall.Mage = function() {
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.playerClass = "Mage";
 };
 GuildHall.Mage.prototype = new GuildHall.PlayerClass();
 
@@ -129,6 +131,7 @@ GuildHall.Stealth = function() {
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.playerClass = "Stealth";
 };
 GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
 
