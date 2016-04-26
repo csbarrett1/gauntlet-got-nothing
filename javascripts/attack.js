@@ -97,14 +97,13 @@ var buildString = [];
 function attackSequence(human, monster) {
 
     function attackAction(attacker, opponent) {
-        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         //Combatant's attack score is caluclated
         var damageToOpponentHealth = calculateAttackDamage(attacker);
         //Opponent's health is reduced by attack score
         opponent.health = opponent.health - damageToOpponentHealth;
         checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
-        buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <b> <p>' + opponent.playerName + ' health: ' + opponent.health + '</b></p></p>');
+        buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <p class="opponentHealth">' + opponent.playerName + ' health: ' + opponent.health + '</p></p>');
         $("#textbox").html(buildString);
         // Opponent progress bar updated.
     }
@@ -117,7 +116,6 @@ function attackSequence(human, monster) {
     //Take off old "entry" classes to make way for tada class
     $("#attackerImage").removeClass('animated slideInLeft');
     $("#opponentImage").removeClass('animated slideInRight');
-    
 
     //Warrior Attacks
     var humanAttack = setTimeout(function() {
@@ -127,6 +125,9 @@ function attackSequence(human, monster) {
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#attackerImage").removeClass('animated quick tada');
         $("#opponentImage").addClass('animated quick tada');
+        var oppHealth = $("#opp_health");
+        var oppFinalHealth = (monster.health / monster.originalHealth) * 100;
+        oppHealth.css("width", oppFinalHealth + "%");
         pausecomp(100);
         reset();
         monsterAttacks();
@@ -149,6 +150,9 @@ function attackSequence(human, monster) {
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#opponentImage").removeClass('animated quick tada');
         $("#attackerImage").addClass('animated quick tada');
+        var playerHealth = $("#player_health");
+        var playerFinalHealth = (human.health / human.originalHealth) * 100;
+        playerHealth.css("width", playerFinalHealth + "%");
         reset();
         }, 900);
     };
@@ -164,18 +168,19 @@ function attackSequence(human, monster) {
 }
 
 function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
-    if (human.health <= 0) {
-        //Disable attack button
-        //move to "lose" page
-        $(".card").hide();
-        $(".card--lose").show();
-    } else if (monster.health <= 0) {
-        //Disable attack button
-        //move to "win" page
-        $(".card").hide();
-        $(".card--win").show();
-    } else {
-        //Keep going
+    var happened = false;
+    if (happened === false) {
+        if (human.health <= 0) {
+            //move to "lose" page
+            $(".card").hide();
+            $(".card--lose").show();
+            happened = true;
+        } else if (monster.health <= 0) {
+            //move to "win" page
+            $(".card").hide();
+            $(".card--win").show();
+            happened = true;
+        }
     }
 }
 

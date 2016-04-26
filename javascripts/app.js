@@ -87,6 +87,7 @@ $(document).ready(function() {
     warrior.generateClass();
     var thisBitchIsMagic = checkToSeeIfMagic();
     if (!thisBitchIsMagic) {
+      attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready", "Ready");
       $(".card").hide();
       $(".card--weapon").show();
     }
@@ -120,24 +121,11 @@ $(document).ready(function() {
     warrior.generateWeapon();
     $(".card").hide();
     $(".card--battleground").show();
+    attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready", "Ready");
   });
 
   //BATTLEGROUND(NON-MAGIC)
   $("#attackBtn").click(function(e) {
-    console.log("orc health", orc.health);
-    console.log("orc og health", orc.originalHealth);
-    let oppHealth = $("#opp_health");
-    let oppFinalHealth = (orc.health / orc.originalHealth) * 100;
-
-    oppHealth.css("width", oppFinalHealth + "%");
-
-    console.log("warrior health", warrior.health);
-    console.log("warrior og health", warrior.originalHealth);
-    let playerHealth = $("#player_health");
-    let playerFinalHealth = (warrior.health / warrior.originalHealth) * 100;
-
-    playerHealth.css("width", playerFinalHealth + "%");
-
     attack.attackSequence(warrior, orc);
   });
 
@@ -212,6 +200,7 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() && selectedClass !== null && selectedWeapon !== null);
         attackerImageHolder.addClass('animated slideInLeft');
         opponentImageHolder.addClass('animated slideInRight');
+        $("#textbox").html(`<p class = "initialStats">Brave Warrior, ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
         break;
     }
 
@@ -224,6 +213,7 @@ $(document).ready(function() {
   $("#nameWasInput").click(function() {
     let name = $(".player_name");
     name.html(warrior.playerName.toUpperCase());
+
 
     let chooseClass = $(".choose_class");
     let chooseWeapon = $(".choose_weapon");
