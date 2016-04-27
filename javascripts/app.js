@@ -100,6 +100,8 @@ $(document).ready(function() {
         $(".card").hide();
         $(".card--battleground--for--magic").show();
         spellCast.populateBattlegroundForMagic(warrior, orc, $("#magicAttackImage"), $("#magicOpponentImage"), "Ready", "Ready"); 
+        $("#magicAttackImage").addClass('animated slideInLeft');
+        $("#magicOpponentImage").addClass('animated slideInRight');
         $("#textboxMagic").html(`<p class = "initialStats">Brave and magical ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
       thisBitchIsMagic = true;
     }
@@ -123,7 +125,10 @@ $(document).ready(function() {
     warrior.generateWeapon();
     $(".card").hide();
     $(".card--battleground").show();
+    $("#textbox").html(`<p class = "initialStats">Brave Warrior, ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
     attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready", "Ready");
+    attackerImageHolder.addClass('animated slideInLeft');
+    opponentImageHolder.addClass('animated slideInRight');
   });
 
   //BATTLEGROUND(NON-MAGIC)
