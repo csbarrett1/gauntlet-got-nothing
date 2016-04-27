@@ -12,24 +12,19 @@ var $ = require("jquery"),
     spellCast = require("./spellCast.js"),
     weapons = require("./weapons.js");
 
-
-
-/*
-Code to generate a human player and an orc player
- */
+//Code to generate a human player and an orc player
 var orc = new enemies.Orc();
 orc.generateClass();
 orc.generateWeapon();
 orc.playerName = "Monkey Arse";
-// console.log("orc", orc);
 
 var warrior = new player.Combatants.Human();
       
-// placeholders for images
+// Variable reference for placeholders for images
 var attackerImageHolder = $("#attackerImage");
 var opponentImageHolder = $("#opponentImage");
 
-//jQuery reference to spell buttons
+//Variable reference to spell buttons
 var lightningSpellButton = $("#lightningSpellLink");
 var fireSpellButton = $("#fireSpellLink");
 var waterSpellButton = $("#waterSpellLink");
@@ -54,12 +49,10 @@ $(document).ready(function() {
   function disabledButtonCheck() {
     if ($("#player-name").val() !== "") {
       $("#nameWasInput").removeClass('disabled');
-    }
-
+    } 
     if (selectedClass !== null) {
       $("#classHasBeenSelected").removeClass('disabled');
     }
-
     if (selectedWeapon !== null) {
       $("#weaponHasBeenSelected").removeClass('disabled');
     }
@@ -218,11 +211,10 @@ $(document).ready(function() {
     }
   });
 
+//Once the user has input their name, all of the output text boxes that dynamically display it are populated
   $("#nameWasInput").click(function() {
     let name = $(".player_name");
     name.html(warrior.playerName.toUpperCase());
-
-
     let chooseClass = $(".choose_class");
     let chooseWeapon = $(".choose_weapon");
     let chooseMagic = $(".choose_magic");

@@ -16,8 +16,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
         // console.log("warrior", warrior);
         if (warrior.class.playerClass === "Fighter" ) {
             imagePrefix = "warrior";
-        }
-        else if (warrior.class.playerClass === "Stealth") {
+        } else if (warrior.class.playerClass === "Stealth") {
             imagePrefix = "berserker";
         }
         return imagePrefix;
@@ -28,8 +27,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
         // console.log("orc", orc);
         if (orc.class.name === "Warrior" ) {
             imagePrefix = "orc1";
-        }
-        else if (orc.class.name === "Berserker") {
+        } else if (orc.class.name === "Berserker") {
             imagePrefix = "orc2";
         }
         else if (orc.class.name === "Shaman") {
@@ -91,6 +89,7 @@ do {curDate = new Date(); }
 while(curDate-date < millis);
 }
 
+//Holds all the "attack" messages, unshifted into an array so the newest always appears on top
 var buildString = [];
 
 //This is what happens if attack button is pressed
