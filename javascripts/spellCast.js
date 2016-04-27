@@ -132,6 +132,7 @@ function attackSpellSequence(human, monster, typeOfSpellCast) {
         humanAttackState = "Strike";
         monsterAttackState = "Ready";
         spellAttackAction(human, monster, typeOfSpellCast);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattlegroundForMagic(human, monster, $("#magicAttackImage"), $("#magicOpponentImage"), humanAttackState, monsterAttackState);
         $("#magicAttackImage").removeClass('animated quick tada');
         $("#magicOpponentImage").addClass('animated quick wobble');
@@ -157,6 +158,7 @@ function attackSpellSequence(human, monster, typeOfSpellCast) {
         humanAttackState = "Ready";
         pausecomp(300);
         attackAction(monster, human);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattlegroundForMagic(human, monster, $("#magicAttackImage"), $("#magicOpponentImage"), humanAttackState, monsterAttackState);
         $("#magicOpponentImage").removeClass('animated quick wobble');
         $("#magicAttackImage").addClass('animated quick tada');

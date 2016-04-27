@@ -101,7 +101,6 @@ function attackSequence(human, monster) {
         var damageToOpponentHealth = calculateAttackDamage(attacker);
         //Opponent's health is reduced by attack score
         opponent.health = opponent.health - damageToOpponentHealth;
-        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
         buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <p class="opponentHealth">' + opponent.playerName + ' health: ' + opponent.health + '</p></p>');
         $("#textbox").html(buildString);
@@ -121,6 +120,7 @@ function attackSequence(human, monster) {
         humanAttackState = "Strike";
         monsterAttackState = "Ready";
         attackAction(human, monster);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#attackerImage").removeClass('animated quick tada');
         $("#opponentImage").addClass('animated quick tada');
@@ -146,6 +146,7 @@ function attackSequence(human, monster) {
         humanAttackState = "Ready";
         pausecomp(300);
         attackAction(monster, human);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#opponentImage").removeClass('animated quick tada');
         $("#attackerImage").addClass('animated quick tada');
