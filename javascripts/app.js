@@ -12,24 +12,19 @@ var $ = require("jquery"),
     spellCast = require("./spellCast.js"),
     weapons = require("./weapons.js");
 
-
-
-/*
-Code to generate a human player and an orc player
- */
+//Code to generate a human player and an orc player
 var orc = new enemies.Orc();
 orc.generateClass();
 orc.generateWeapon();
 orc.playerName = "Monkey Arse";
-// console.log("orc", orc);
 
 var warrior = new player.Combatants.Human();
       
-// placeholders for images
+// Variable reference for placeholders for images
 var attackerImageHolder = $("#attackerImage");
 var opponentImageHolder = $("#opponentImage");
 
-//jQuery reference to spell buttons
+//Variable reference to spell buttons
 var lightningSpellButton = $("#lightningSpellLink");
 var fireSpellButton = $("#fireSpellLink");
 var waterSpellButton = $("#waterSpellLink");
@@ -54,12 +49,10 @@ $(document).ready(function() {
   function disabledButtonCheck() {
     if ($("#player-name").val() !== "") {
       $("#nameWasInput").removeClass('disabled');
-    }
-
+    } 
     if (selectedClass !== null) {
       $("#classHasBeenSelected").removeClass('disabled');
     }
-
     if (selectedWeapon !== null) {
       $("#weaponHasBeenSelected").removeClass('disabled');
     }
@@ -100,6 +93,8 @@ $(document).ready(function() {
         $(".card").hide();
         $(".card--battleground--for--magic").show();
         spellCast.populateBattlegroundForMagic(warrior, orc, $("#magicAttackImage"), $("#magicOpponentImage"), "Ready", "Ready"); 
+        $("#magicAttackImage").addClass('animated slideInLeft');
+        $("#magicOpponentImage").addClass('animated slideInRight');
         $("#textboxMagic").html(`<p class = "initialStats">Brave and magical ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
       thisBitchIsMagic = true;
     }
@@ -123,7 +118,10 @@ $(document).ready(function() {
     warrior.generateWeapon();
     $(".card").hide();
     $(".card--battleground").show();
+    $("#textbox").html(`<p class = "initialStats">Brave Warrior, ${warrior.playerName}</p> <p class="initialStatsSubtext">Class: ${warrior.class}  |  Strength: ${warrior.strength}  |  Intelligence: ${warrior.intelligence}  |  Health: ${warrior.health}</p><p class = "initialStats">Threatening Opponent, ${orc.playerName}:</p> <p class="initialStatsSubtext">Class: ${orc.class}  |  Strength: ${orc.strength}  |  Intelligence: ${orc.intelligence}  |  Health: ${orc.health}</p>`);
     attack.populateBattleground(warrior, orc, attackerImageHolder, opponentImageHolder, "Ready", "Ready");
+    attackerImageHolder.addClass('animated slideInLeft');
+    opponentImageHolder.addClass('animated slideInRight');
   });
 
   //BATTLEGROUND(NON-MAGIC)
@@ -213,11 +211,10 @@ $(document).ready(function() {
     }
   });
 
+//Once the user has input their name, all of the output text boxes that dynamically display it are populated
   $("#nameWasInput").click(function() {
     let name = $(".player_name");
     name.html(warrior.playerName.toUpperCase());
-
-
     let chooseClass = $(".choose_class");
     let chooseWeapon = $(".choose_weapon");
     let chooseMagic = $(".choose_magic");

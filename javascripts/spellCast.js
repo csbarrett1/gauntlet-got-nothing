@@ -3,6 +3,7 @@
 //Browserify Dependencies
 let $ = require("jquery");
 
+//Attack time counter
 let attackTimes = 0;
 
 // Populating images to battlefield
@@ -12,11 +13,9 @@ function populateBattlegroundForMagic(warrior, orc, playerHolder1, playerHolder2
         var imagePrefix = null;
         if (orc.class.name === "Warrior" ) {
             imagePrefix = "orc1";
-        }
-        else if (orc.class.name === "Berserker") {
+        } else if (orc.class.name === "Berserker") {
             imagePrefix = "orc2";
-        }
-        else if (orc.class.name === "Shaman") {
+        } else if (orc.class.name === "Shaman") {
             imagePrefix = "orc3";
         }
         return imagePrefix;
@@ -75,11 +74,11 @@ function calculateAttackDamage(player) {
     return attackDamage;
 }
 
+
+//Helper functions
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-
-
 
 function pausecomp(millis) {
 var date = new Date();
@@ -89,10 +88,10 @@ do {curDate = new Date(); }
 while(curDate-date < millis);
 }
 
+
+
+//Holds all the "attack" messages, unshifted into an array so the newest always appears on top
 var buildString = [];
-
-
-
 
 //This is what happens if attack button is pressed
 function attackSpellSequence(human, monster, typeOfSpellCast) {
@@ -132,6 +131,7 @@ function attackSpellSequence(human, monster, typeOfSpellCast) {
         humanAttackState = "Strike";
         monsterAttackState = "Ready";
         spellAttackAction(human, monster, typeOfSpellCast);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattlegroundForMagic(human, monster, $("#magicAttackImage"), $("#magicOpponentImage"), humanAttackState, monsterAttackState);
         $("#magicAttackImage").removeClass('animated quick tada');
         $("#magicOpponentImage").addClass('animated quick wobble');
@@ -157,6 +157,7 @@ function attackSpellSequence(human, monster, typeOfSpellCast) {
         humanAttackState = "Ready";
         pausecomp(300);
         attackAction(monster, human);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattlegroundForMagic(human, monster, $("#magicAttackImage"), $("#magicOpponentImage"), humanAttackState, monsterAttackState);
         $("#magicOpponentImage").removeClass('animated quick wobble');
         $("#magicAttackImage").addClass('animated quick tada');
@@ -189,7 +190,6 @@ function checkHealthToSeeIfOneOfTheseBitchesDied(human, monster) {
 }
 
 //Every third time, strength is decreased by certain amount
-
 function reduceStrength(attackTimes, human, monster) {
     if (attackTimes % 3 === 0 && attackTimes > 0) {
         human.strength = human.strength - 20;

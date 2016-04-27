@@ -16,8 +16,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
         // console.log("warrior", warrior);
         if (warrior.class.playerClass === "Fighter" ) {
             imagePrefix = "warrior";
-        }
-        else if (warrior.class.playerClass === "Stealth") {
+        } else if (warrior.class.playerClass === "Stealth") {
             imagePrefix = "berserker";
         }
         return imagePrefix;
@@ -28,8 +27,7 @@ function populateBattleground(warrior, orc, playerHolder1, playerHolder2, state,
         // console.log("orc", orc);
         if (orc.class.name === "Warrior" ) {
             imagePrefix = "orc1";
-        }
-        else if (orc.class.name === "Berserker") {
+        } else if (orc.class.name === "Berserker") {
             imagePrefix = "orc2";
         }
         else if (orc.class.name === "Shaman") {
@@ -91,6 +89,7 @@ do {curDate = new Date(); }
 while(curDate-date < millis);
 }
 
+//Holds all the "attack" messages, unshifted into an array so the newest always appears on top
 var buildString = [];
 
 //This is what happens if attack button is pressed
@@ -101,7 +100,6 @@ function attackSequence(human, monster) {
         var damageToOpponentHealth = calculateAttackDamage(attacker);
         //Opponent's health is reduced by attack score
         opponent.health = opponent.health - damageToOpponentHealth;
-        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         // Display attack score - DOM output("Attacker" attacks "opponent" with "weapon" and does {x} damage.)
         buildString.unshift('<p class="attackOutput">' + attacker.playerName +' the ' + attacker.class + ' attacks ' + opponent.playerName + ' the ' + opponent.class + ' with ' + attacker.weapon + ' and does ' + damageToOpponentHealth + ' damage. <p class="opponentHealth">' + opponent.playerName + ' health: ' + opponent.health + '</p></p>');
         $("#textbox").html(buildString);
@@ -121,6 +119,7 @@ function attackSequence(human, monster) {
         humanAttackState = "Strike";
         monsterAttackState = "Ready";
         attackAction(human, monster);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#attackerImage").removeClass('animated quick tada');
         $("#opponentImage").addClass('animated quick tada');
@@ -146,6 +145,7 @@ function attackSequence(human, monster) {
         humanAttackState = "Ready";
         pausecomp(300);
         attackAction(monster, human);
+        checkHealthToSeeIfOneOfTheseBitchesDied(human, monster);
         populateBattleground(human, monster, $("#attackerImage"), $("#opponentImage"), humanAttackState, monsterAttackState);
         $("#opponentImage").removeClass('animated quick tada');
         $("#attackerImage").addClass('animated quick tada');
